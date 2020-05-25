@@ -1,0 +1,10 @@
+---
+  - name: Ensure pre-checks runs successfully.
+    shell: "{{ kits_dir }}/bluedata-prechecks-epic-entdoc-5.0.bin"
+    changed_when: false
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+      msg: "{{ res.stdout }}"
+

@@ -1,0 +1,11 @@
+---
+# Kits directory on controller-node
+kits_dir: /root/R2F06-70004
+
+
+# system settings
+ntp_servers: ['time.google.com']
+
+#hcp controller
+hcp-controller:
+  url: https://10.1.10.20
