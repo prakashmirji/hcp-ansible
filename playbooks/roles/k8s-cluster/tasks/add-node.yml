@@ -19,11 +19,12 @@
     register: res
   
   - block:
-    - name: Create k8s cluster.
+    
+    - name: Add nodes to cluster # TODO
       delegate_to: localhost
       shell: |
         echo "{{ item }} added"
       with_items: {{ k8sclusternodes }}
-      when: provision is defined
+      when: add-node is defined
 
     when: res is defined

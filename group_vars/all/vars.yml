@@ -8,4 +8,12 @@ ntp_servers: ['time.google.com']
 
 #hcp controller
 hcp-controller:
-  url: https://10.1.10.20
+  url: https://gateway-node.v0010.gselr5.local:8080
+  username: admin
+  password: admin@123
+  tenant_name: prakash-test
+
+k8s-hosts:
+  username: root
+  password: root
+

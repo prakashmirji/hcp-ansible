@@ -19,11 +19,12 @@
     register: res
   
   - block:
-    - name: Create k8s cluster.
+
+    - name: Delete node from cluster # TODO
       delegate_to: localhost
       shell: |
-        echo "{{ item }} added"
+        echo "{{ item }} deleted"
       with_items: {{ k8sclusternodes }}
-      when: provision is defined
+      when: delete-node is defined
 
     when: res is defined
