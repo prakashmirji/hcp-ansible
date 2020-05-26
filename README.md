@@ -28,6 +28,11 @@ Note: This repo has basic framework to get started, we will be adding more funct
 ### How to setup your development env
 
 ### How to test
+```
+ansible-playbooks -i hosts site.yml
+or
+ansible-playbooks -i hosts playbooks/prepare.yml
+```
 
 ### Troubleshooting
 
