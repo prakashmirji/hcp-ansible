@@ -1,8 +1,0 @@
----
-  - name: Provision nodes
-    hosts: all
-    gather_facts: false
-    roles:
-      - role: provision
-        vars:
-          provision: yes

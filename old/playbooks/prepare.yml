@@ -1,8 +1,0 @@
----
-  - name: Prepare nodes before installing software.
-    hosts: test
-    gather_facts: false
-    roles:
-      - role: prepare
-        vars:
-           prepare: yes

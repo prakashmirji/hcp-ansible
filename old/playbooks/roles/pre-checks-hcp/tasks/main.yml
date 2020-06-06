@@ -1,3 +1,0 @@
----
-- include_tasks: pre-checks.yml
-  when: run_checks

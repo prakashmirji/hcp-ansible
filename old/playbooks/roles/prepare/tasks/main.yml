@@ -1,3 +1,0 @@
----
-  - include_tasks: prepare.yml
-    when: prepare is defined

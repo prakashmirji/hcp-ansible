@@ -1,3 +1,0 @@
----
-  - import_playbook: playbooks/pre-checks-hcp.yml
-  - import_playbook: playbooks/prepare.yml
