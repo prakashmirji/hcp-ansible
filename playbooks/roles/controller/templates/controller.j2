@@ -24,19 +24,6 @@ parameters:
   ssh:
     password: {{ credentials.ssh.password }}
     username: {{ credentials.ssh.username }}
-
----
-op: GatewaySetup
-platform: {{ common.platform }}
-parameters:
-  config:
-    gateway_set_hostname: {{ gateway.gateway_set_hostname }}
-  host:
-    host_ip: {{ gateway.host_ip }}
-  ssh:
-    password: {{ credentials.ssh.password }}
-    username: {{ credentials.ssh.username }}
-
 ---
 op: ControllerConfig
 platform: {{ common.platform }}
@@ -57,12 +44,3 @@ parameters:
   ssh:
     password: {{ credentials.ssh.password }}
     username: {{ credentials.ssh.username }}
-
----
-op: GatewayConfig
-platform: {{ common.platform }}
-parameters:
-  config:
-    gateway_set_hostname: {{ gateway.gateway_set_hostname }}
-  host:
-    internal_ip: {{ gateway.host_ip }}
