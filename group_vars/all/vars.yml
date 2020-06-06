@@ -17,3 +17,47 @@ k8s-hosts:
   username: root
   password: root
 
+credentials:
+  ssh:
+    username: root
+    password: HP!nvent123
+
+common:
+  platform: onprem
+  proxy_url: http://web-proxy.corp.hpecorp.net:8080
+
+init:
+  host_ip: 10.1.10.20
+
+controller:
+  url_bin_path:  https://bluedata-releases.s3.amazonaws.com/GLDrops/hpe-cp-epic-release-5.1-1289.bin
+  host_ip: 10.1.10.20
+  bd_domain: bddomain
+  bd_prefix: bluedata
+  hdfs_disks: /dev/sdc
+  no_tenant_isolation: false
+  no_tenant_storage: false
+  node_disks: /dev/sdb
+  int_start_ip: 172.20.0.2
+  int_end_ip: 172.20.255.254
+  int_gw_ip: 172.20.0.1
+  int_nw_mask: 16
+
+worker:
+  host_ip_1: 10.1.10.21
+  host_ip_2: 10.1.10.22
+  host_ip_3: 10.1.10.23
+  hdfs_disks: /dev/sdc
+  node_disks: /dev/sdb
+
+k8shost:
+  host_ip_1: 10.1.10.21
+  host_ip_2: 10.1.10.22
+  host_ip_3: 10.1.10.23
+  ephemeral_disks: /dev/sdc
+  persistent_disks: /dev/sdb
+
+gateway:
+  gateway_set_hostname: gateway-node.v0010.gselr5.local
+  host_ip: 10.1.10.24
+

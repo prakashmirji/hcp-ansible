@@ -1,5 +1,5 @@
 ---
-  - name: Provision nodes
+  - name: Provision nodes with OS
     hosts: all
     gather_facts: false
     roles:

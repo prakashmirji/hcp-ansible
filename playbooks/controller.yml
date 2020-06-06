@@ -1,0 +1,8 @@
+---
+  - name: Provision controller nodes
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: controller
+        vars:
+          provision: yes

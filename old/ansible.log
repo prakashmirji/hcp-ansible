@@ -1,0 +1,210 @@
+2020-05-25 06:57:55,190 p=42110 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 06:57:55,202 p=42110 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 06:57:55,202 p=42110 u=root n=ansible | Monday 25 May 2020  06:57:55 -0400 (0:00:00.093)       0:00:00.093 ************ 
+2020-05-25 06:57:55,220 p=42110 u=root n=ansible | fatal: [controller-node]: FAILED! => {"reason": "We were unable to read either as JSON nor YAML, these are the errors we got from each:\nJSON: Expecting value: line 1 column 1 (char 0)\n\nSyntax Error while loading YAML.\n  expected <block end>, but found '<scalar>'\n\nThe error appears to be in '/root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml': line 3, column 26, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  - name: Ensure pre-checks runs successfully.\n    shell: {{ kits_dir }}/bluedata-prechecks-epic-entdoc-5.0.bin\n                         ^ here\nWe could be wrong, but this one looks like it might be an issue with\nmissing quotes. Always quote template expression brackets when they\nstart a value. For instance:\n\n    with_items:\n      - {{ foo }}\n\nShould be written as:\n\n    with_items:\n      - \"{{ foo }}\"\n"}
+2020-05-25 06:57:55,222 p=42110 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 06:57:55,222 p=42110 u=root n=ansible | controller-node            : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 06:57:55,222 p=42110 u=root n=ansible | Monday 25 May 2020  06:57:55 -0400 (0:00:00.019)       0:00:00.113 ************ 
+2020-05-25 06:57:55,222 p=42110 u=root n=ansible | =============================================================================== 
+2020-05-25 06:57:55,222 p=42110 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.02s
+2020-05-25 07:01:19,472 p=46163 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 07:01:19,484 p=46163 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 07:01:19,484 p=46163 u=root n=ansible | Monday 25 May 2020  07:01:19 -0400 (0:00:00.093)       0:00:00.093 ************ 
+2020-05-25 07:01:19,504 p=46163 u=root n=ansible | included: /root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml for controller-node
+2020-05-25 07:01:19,508 p=46163 u=root n=ansible | TASK [pre-checks-hcp : Ensure pre-checks runs successfully.] *******************************************************************************************************
+2020-05-25 07:01:19,508 p=46163 u=root n=ansible | Monday 25 May 2020  07:01:19 -0400 (0:00:00.023)       0:00:00.116 ************ 
+2020-05-25 07:01:19,579 p=46163 u=root n=ansible | fatal: [controller-node]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'kits_dir' is undefined\n\nThe error appears to be in '/root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml': line 2, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n---\n  - name: Ensure pre-checks runs successfully.\n    ^ here\n"}
+2020-05-25 07:01:19,581 p=46163 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 07:01:19,581 p=46163 u=root n=ansible | controller-node            : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 07:01:19,581 p=46163 u=root n=ansible | Monday 25 May 2020  07:01:19 -0400 (0:00:00.073)       0:00:00.190 ************ 
+2020-05-25 07:01:19,582 p=46163 u=root n=ansible | =============================================================================== 
+2020-05-25 07:01:19,582 p=46163 u=root n=ansible | pre-checks-hcp : Ensure pre-checks runs successfully. ------------------------------------------------------------------------------------------------------- 0.07s
+2020-05-25 07:01:19,582 p=46163 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.02s
+2020-05-25 07:15:44,900 p=65328 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 07:15:44,913 p=65328 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 07:15:44,913 p=65328 u=root n=ansible | Monday 25 May 2020  07:15:44 -0400 (0:00:00.087)       0:00:00.087 ************ 
+2020-05-25 07:15:44,932 p=65328 u=root n=ansible | included: /root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml for controller-node
+2020-05-25 07:15:44,935 p=65328 u=root n=ansible | TASK [pre-checks-hcp : Ensure pre-checks runs successfully.] *******************************************************************************************************
+2020-05-25 07:15:44,935 p=65328 u=root n=ansible | Monday 25 May 2020  07:15:44 -0400 (0:00:00.022)       0:00:00.110 ************ 
+2020-05-25 07:15:49,467 p=65328 u=root n=ansible | fatal: [controller-node]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python"}, "changed": false, "cmd": "/root/R2F06-70004/bluedata-prechecks-epic-entdoc-5.0.bin", "delta": "0:00:03.552165", "end": "2020-05-25 07:15:49.389582", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2020-05-25 07:15:45.837417", "stderr": "df: ‘/opt/bluedata/share/2/TenantShare’: Transport endpoint is not connected\ndf: ‘/opt/bluedata/share/4/TenantShare’: Transport endpoint is not connected", "stderr_lines": ["df: ‘/opt/bluedata/share/2/TenantShare’: Transport endpoint is not connected", "df: ‘/opt/bluedata/share/4/TenantShare’: Transport endpoint is not connected"], "stdout": "\nPre-install checks for BlueData EPIC Enterprise-Docker 5.0\n\nHardware properties\n\tChecking CPU count: PASSED.\n\tChecking memory capacity: PASSED.\n\tChecking number of disks available: PASSED.\n  Total: 3  --  Failed: 0  --  Warning: 0  --  Forced(success): 0\n\n\nNetwork port availability\n\tChecking ss availability: PASSED.\n\tChecking apache http access port: PASSED.\n\tChecking apache http access port for epic-nagios: PASSED.\n\tChecking apache https access port: PASSED.\n\tChecking apache https access port for epic-nagios: PASSED.\n\tChecking erlang epmd port: FAILED.\n\t\tPort(s) 4369 must be available.\n\tChecking bd_mgmt rest api port: FAILED.\n\t\tPort(s) 8080 must be available.\n\tChecking haproxy stats: PASSED.\n\tChecking erlang rpc ports: FAILED.\n\t\tPort(s) 9000,9001 must be available.\n\tChecking erlang ssh-rpc port: FAILED.\n\t\tPort(s) 9002 must be available.\n\tChecking nrpe access port: PASSED.\n\tChecking nrpe access port for epic-nagios: FAILED.\n\t\tPort(s) 5667 must be available.\n\tChecking kerberos udp ports: PASSED.\n\tChecking kerberos tcp ports: PASSED.\n\tChecking HTTPFS ports: PASSED.\n\tChecking HDFS Ports: PASSED.\n\tChecking PCSD Daemon port: PASSED.\n\tChecking Cluster Manager port: PASSED.\n\tChecking Monitoring ports: PASSED.\n\tChecking VxLAN tunnel port: PASSED.\n\tChecking K8S-Calico BGP: PASSED.\n\tChecking K8S-Calico Typha: PASSED.\n\tChecking K8S-Kubernetes API server: PASSED.\n\tChecking K8S-etcd server client API: PASSED.\n\tChecking K8S-Kubelet API: PASSED.\n\tChecking K8S-Kubernetes Scheduler: PASSED.\n\tChecking K8S-Kubernetes Controller Manager: PASSED.\n\tChecking EPIC VXLAN port: FAILED.\n\t\tPort 4789 is unavailable.\n  Total: 28  --  Failed: 6  --  Warning: 0  --  Forced(success): 0\n\n\nNetwork configuration\n\tChecking primary IP address: FAILED.\n\t\tMultiple interfaces with IP address assignments found.\n\t\tUse --controller-public-if to specify a public interface.\n\tChecking FQDN of the host: FAILED.\n\t\tFailed to determine FQDN as primary IP check failed.\n\tChecking default gateway settings: PASSED.\n\tChecking Proxy setting: PASSED.\n\tChecking internet access: PASSED.\n  Total: 5  --  Failed: 2  --  Warning: 0  --  Forced(success): 0\n\n\nOperating system configuration\n\tChecking OS type: PASSED.\n\tChecking running kernel version: PASSED.\n\tChecking CONFIG_SECCOMP enabled in kernel: PASSED.\n\tChecking SELinux setting: WARNING.\n\t\tSElinux is disabled.\n\tChecking IPtables/Firewalld configuration: PASSED.\n\tChecking automount configuration: PASSED.\n\tChecking SSHD configuration: PASSED.\n\tChecking rsyslog setting: PASSED.\n\tChecking user and group specified: PASSED.\n\tChecking dnsmasq user and group specified: PASSED.\n\tChecking for krb5.keytab: PASSED.\n\tChecking cgconfig kernel params: PASSED.\n  Total: 12  --  Failed: 0  --  Warning: 1  --  Forced(success): 0\n\n\n\nFilesystem free space checks.\n\tChecking freespace on /: PASSED.\n\tChecking freespace on /var/lib/docker: PASSED.\n\tChecking configured swap size: PASSED.\n\tChecking docker storage: FAILED.\n\t\tDOCKER_STORAGE_OPTIONS is already set. It should empty.\n  Total: 4  --  Failed: 1  --  Warning: 0  --  Forced(success): 0\n\n***************************************************************************\nAggregate tests summary:\n             Total : 52\n            Failed : 9\n           Warning : 1\n   Forced(success) : 0\nERROR: Please fix the failure(s) before running the BlueData software installer.\nAdditional information for debugging is written to /tmp/bd_prechecks.65434.log\n***************************************************************************", "stdout_lines": ["", "Pre-install checks for BlueData EPIC Enterprise-Docker 5.0", "", "Hardware properties", "\tChecking CPU count: PASSED.", "\tChecking memory capacity: PASSED.", "\tChecking number of disks available: PASSED.", "  Total: 3  --  Failed: 0  --  Warning: 0  --  Forced(success): 0", "", "", "Network port availability", "\tChecking ss availability: PASSED.", "\tChecking apache http access port: PASSED.", "\tChecking apache http access port for epic-nagios: PASSED.", "\tChecking apache https access port: PASSED.", "\tChecking apache https access port for epic-nagios: PASSED.", "\tChecking erlang epmd port: FAILED.", "\t\tPort(s) 4369 must be available.", "\tChecking bd_mgmt rest api port: FAILED.", "\t\tPort(s) 8080 must be available.", "\tChecking haproxy stats: PASSED.", "\tChecking erlang rpc ports: FAILED.", "\t\tPort(s) 9000,9001 must be available.", "\tChecking erlang ssh-rpc port: FAILED.", "\t\tPort(s) 9002 must be available.", "\tChecking nrpe access port: PASSED.", "\tChecking nrpe access port for epic-nagios: FAILED.", "\t\tPort(s) 5667 must be available.", "\tChecking kerberos udp ports: PASSED.", "\tChecking kerberos tcp ports: PASSED.", "\tChecking HTTPFS ports: PASSED.", "\tChecking HDFS Ports: PASSED.", "\tChecking PCSD Daemon port: PASSED.", "\tChecking Cluster Manager port: PASSED.", "\tChecking Monitoring ports: PASSED.", "\tChecking VxLAN tunnel port: PASSED.", "\tChecking K8S-Calico BGP: PASSED.", "\tChecking K8S-Calico Typha: PASSED.", "\tChecking K8S-Kubernetes API server: PASSED.", "\tChecking K8S-etcd server client API: PASSED.", "\tChecking K8S-Kubelet API: PASSED.", "\tChecking K8S-Kubernetes Scheduler: PASSED.", "\tChecking K8S-Kubernetes Controller Manager: PASSED.", "\tChecking EPIC VXLAN port: FAILED.", "\t\tPort 4789 is unavailable.", "  Total: 28  --  Failed: 6  --  Warning: 0  --  Forced(success): 0", "", "", "Network configuration", "\tChecking primary IP address: FAILED.", "\t\tMultiple interfaces with IP address assignments found.", "\t\tUse --controller-public-if to specify a public interface.", "\tChecking FQDN of the host: FAILED.", "\t\tFailed to determine FQDN as primary IP check failed.", "\tChecking default gateway settings: PASSED.", "\tChecking Proxy setting: PASSED.", "\tChecking internet access: PASSED.", "  Total: 5  --  Failed: 2  --  Warning: 0  --  Forced(success): 0", "", "", "Operating system configuration", "\tChecking OS type: PASSED.", "\tChecking running kernel version: PASSED.", "\tChecking CONFIG_SECCOMP enabled in kernel: PASSED.", "\tChecking SELinux setting: WARNING.", "\t\tSElinux is disabled.", "\tChecking IPtables/Firewalld configuration: PASSED.", "\tChecking automount configuration: PASSED.", "\tChecking SSHD configuration: PASSED.", "\tChecking rsyslog setting: PASSED.", "\tChecking user and group specified: PASSED.", "\tChecking dnsmasq user and group specified: PASSED.", "\tChecking for krb5.keytab: PASSED.", "\tChecking cgconfig kernel params: PASSED.", "  Total: 12  --  Failed: 0  --  Warning: 1  --  Forced(success): 0", "", "", "", "Filesystem free space checks.", "\tChecking freespace on /: PASSED.", "\tChecking freespace on /var/lib/docker: PASSED.", "\tChecking configured swap size: PASSED.", "\tChecking docker storage: FAILED.", "\t\tDOCKER_STORAGE_OPTIONS is already set. It should empty.", "  Total: 4  --  Failed: 1  --  Warning: 0  --  Forced(success): 0", "", "***************************************************************************", "Aggregate tests summary:", "             Total : 52", "            Failed : 9", "           Warning : 1", "   Forced(success) : 0", "ERROR: Please fix the failure(s) before running the BlueData software installer.", "Additional information for debugging is written to /tmp/bd_prechecks.65434.log", "***************************************************************************"]}
+2020-05-25 07:15:49,470 p=65328 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 07:15:49,470 p=65328 u=root n=ansible | controller-node            : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 07:15:49,470 p=65328 u=root n=ansible | Monday 25 May 2020  07:15:49 -0400 (0:00:04.534)       0:00:04.645 ************ 
+2020-05-25 07:15:49,471 p=65328 u=root n=ansible | =============================================================================== 
+2020-05-25 07:15:49,471 p=65328 u=root n=ansible | pre-checks-hcp : Ensure pre-checks runs successfully. ------------------------------------------------------------------------------------------------------- 4.54s
+2020-05-25 07:15:49,471 p=65328 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.02s
+2020-05-25 07:21:22,955 p=10870 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 07:21:22,968 p=10870 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 07:21:22,968 p=10870 u=root n=ansible | Monday 25 May 2020  07:21:22 -0400 (0:00:00.089)       0:00:00.089 ************ 
+2020-05-25 07:21:22,997 p=10870 u=root n=ansible | fatal: [controller-node]: FAILED! => {"reason": "conflicting action statements: shell, debug\n\nThe error appears to be in '/root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml': line 2, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n---\n  - name: Ensure pre-checks runs successfully.\n    ^ here\n"}
+2020-05-25 07:21:22,999 p=10870 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 07:21:22,999 p=10870 u=root n=ansible | controller-node            : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 07:21:22,999 p=10870 u=root n=ansible | Monday 25 May 2020  07:21:22 -0400 (0:00:00.031)       0:00:00.120 ************ 
+2020-05-25 07:21:23,000 p=10870 u=root n=ansible | =============================================================================== 
+2020-05-25 07:21:23,000 p=10870 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.03s
+2020-05-25 07:25:19,578 p=16110 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 07:25:19,591 p=16110 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 07:25:19,591 p=16110 u=root n=ansible | Monday 25 May 2020  07:25:19 -0400 (0:00:00.091)       0:00:00.091 ************ 
+2020-05-25 07:25:19,612 p=16110 u=root n=ansible | included: /root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml for controller-node
+2020-05-25 07:25:19,615 p=16110 u=root n=ansible | TASK [pre-checks-hcp : Ensure pre-checks runs successfully.] *******************************************************************************************************
+2020-05-25 07:25:19,615 p=16110 u=root n=ansible | Monday 25 May 2020  07:25:19 -0400 (0:00:00.024)       0:00:00.115 ************ 
+2020-05-25 07:25:23,982 p=16110 u=root n=ansible | ok: [controller-node]
+2020-05-25 07:25:23,992 p=16110 u=root n=ansible | TASK [pre-checks-hcp : debug] **************************************************************************************************************************************
+2020-05-25 07:25:23,992 p=16110 u=root n=ansible | Monday 25 May 2020  07:25:23 -0400 (0:00:04.376)       0:00:04.492 ************ 
+2020-05-25 07:25:24,065 p=16110 u=root n=ansible | fatal: [controller-node]: FAILED! => {
+    "msg": "\nPre-install checks for BlueData EPIC Enterprise-Docker 5.0\n\nHardware properties\n\tChecking CPU count: PASSED.\n\tChecking memory capacity: PASSED.\n\tChecking number of disks available: PASSED.\n  Total: 3  --  Failed: 0  --  Warning: 0  --  Forced(success): 0\n\n\nNetwork port availability\n\tChecking ss availability: PASSED.\n\tChecking apache http access port: PASSED.\n\tChecking apache http access port for epic-nagios: PASSED.\n\tChecking apache https access port: PASSED.\n\tChecking apache https access port for epic-nagios: PASSED.\n\tChecking erlang epmd port: FAILED.\n\t\tPort(s) 4369 must be available.\n\tChecking bd_mgmt rest api port: FAILED.\n\t\tPort(s) 8080 must be available.\n\tChecking haproxy stats: PASSED.\n\tChecking erlang rpc ports: FAILED.\n\t\tPort(s) 9000,9001 must be available.\n\tChecking erlang ssh-rpc port: FAILED.\n\t\tPort(s) 9002 must be available.\n\tChecking nrpe access port: PASSED.\n\tChecking nrpe access port for epic-nagios: FAILED.\n\t\tPort(s) 5667 must be available.\n\tChecking kerberos udp ports: PASSED.\n\tChecking kerberos tcp ports: PASSED.\n\tChecking HTTPFS ports: PASSED.\n\tChecking HDFS Ports: PASSED.\n\tChecking PCSD Daemon port: PASSED.\n\tChecking Cluster Manager port: PASSED.\n\tChecking Monitoring ports: PASSED.\n\tChecking VxLAN tunnel port: PASSED.\n\tChecking K8S-Calico BGP: PASSED.\n\tChecking K8S-Calico Typha: PASSED.\n\tChecking K8S-Kubernetes API server: PASSED.\n\tChecking K8S-etcd server client API: PASSED.\n\tChecking K8S-Kubelet API: PASSED.\n\tChecking K8S-Kubernetes Scheduler: PASSED.\n\tChecking K8S-Kubernetes Controller Manager: PASSED.\n\tChecking EPIC VXLAN port: FAILED.\n\t\tPort 4789 is unavailable.\n  Total: 28  --  Failed: 6  --  Warning: 0  --  Forced(success): 0\n\n\nNetwork configuration\n\tChecking primary IP address: FAILED.\n\t\tMultiple interfaces with IP address assignments found.\n\t\tUse --controller-public-if to specify a public interface.\n\tChecking FQDN of the host: FAILED.\n\t\tFailed to determine FQDN as primary IP check failed.\n\tChecking default gateway settings: PASSED.\n\tChecking Proxy setting: PASSED.\n\tChecking internet access: PASSED.\n  Total: 5  --  Failed: 2  --  Warning: 0  --  Forced(success): 0\n\n\nOperating system configuration\n\tChecking OS type: PASSED.\n\tChecking running kernel version: PASSED.\n\tChecking CONFIG_SECCOMP enabled in kernel: PASSED.\n\tChecking SELinux setting: WARNING.\n\t\tSElinux is disabled.\n\tChecking IPtables/Firewalld configuration: PASSED.\n\tChecking automount configuration: PASSED.\n\tChecking SSHD configuration: PASSED.\n\tChecking rsyslog setting: PASSED.\n\tChecking user and group specified: PASSED.\n\tChecking dnsmasq user and group specified: PASSED.\n\tChecking for krb5.keytab: PASSED.\n\tChecking cgconfig kernel params: PASSED.\n  Total: 12  --  Failed: 0  --  Warning: 1  --  Forced(success): 0\n\n\n\nFilesystem free space checks.\n\tChecking freespace on /: PASSED.\n\tChecking freespace on /var/lib/docker: PASSED.\n\tChecking configured swap size: PASSED.\n\tChecking docker storage: FAILED.\n\t\tDOCKER_STORAGE_OPTIONS is already set. It should empty.\n  Total: 4  --  Failed: 1  --  Warning: 0  --  Forced(success): 0\n\n***************************************************************************\nAggregate tests summary:\n             Total : 52\n            Failed : 9\n           Warning : 1\n   Forced(success) : 0\nERROR: Please fix the failure(s) before running the BlueData software installer.\nAdditional information for debugging is written to /tmp/bd_prechecks.16200.log\n***************************************************************************"
+}
+2020-05-25 07:25:24,068 p=16110 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 07:25:24,069 p=16110 u=root n=ansible | controller-node            : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 07:25:24,069 p=16110 u=root n=ansible | Monday 25 May 2020  07:25:24 -0400 (0:00:00.077)       0:00:04.569 ************ 
+2020-05-25 07:25:24,069 p=16110 u=root n=ansible | =============================================================================== 
+2020-05-25 07:25:24,070 p=16110 u=root n=ansible | pre-checks-hcp : Ensure pre-checks runs successfully. ------------------------------------------------------------------------------------------------------- 4.38s
+2020-05-25 07:25:24,070 p=16110 u=root n=ansible | pre-checks-hcp : debug -------------------------------------------------------------------------------------------------------------------------------------- 0.08s
+2020-05-25 07:25:24,070 p=16110 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.02s
+2020-05-25 07:28:39,403 p=22437 u=root n=ansible | PLAY [controller-node] *********************************************************************************************************************************************
+2020-05-25 07:28:39,417 p=22437 u=root n=ansible | TASK [pre-checks-hcp : include_tasks] ******************************************************************************************************************************
+2020-05-25 07:28:39,417 p=22437 u=root n=ansible | Monday 25 May 2020  07:28:39 -0400 (0:00:00.099)       0:00:00.099 ************ 
+2020-05-25 07:28:39,438 p=22437 u=root n=ansible | included: /root/prakash/hcp-ansible/playbooks/roles/pre-checks-hcp/tasks/pre-checks.yml for controller-node
+2020-05-25 07:28:39,442 p=22437 u=root n=ansible | TASK [pre-checks-hcp : Ensure pre-checks runs successfully.] *******************************************************************************************************
+2020-05-25 07:28:39,442 p=22437 u=root n=ansible | Monday 25 May 2020  07:28:39 -0400 (0:00:00.024)       0:00:00.123 ************ 
+2020-05-25 07:28:43,976 p=22437 u=root n=ansible | fatal: [controller-node]: FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "cmd": "/root/R2F06-70004/bluedata-prechecks-epic-entdoc-5.0.bin",
+    "delta": "0:00:03.555698",
+    "end": "2020-05-25 07:28:43.896060",
+    "failed_when_result": true,
+    "rc": 1,
+    "start": "2020-05-25 07:28:40.340362"
+}
+
+STDOUT:
+
+
+Pre-install checks for BlueData EPIC Enterprise-Docker 5.0
+
+Hardware properties
+	Checking CPU count: PASSED.
+	Checking memory capacity: PASSED.
+	Checking number of disks available: PASSED.
+  Total: 3  --  Failed: 0  --  Warning: 0  --  Forced(success): 0
+
+
+Network port availability
+	Checking ss availability: PASSED.
+	Checking apache http access port: PASSED.
+	Checking apache http access port for epic-nagios: PASSED.
+	Checking apache https access port: PASSED.
+	Checking apache https access port for epic-nagios: PASSED.
+	Checking erlang epmd port: FAILED.
+		Port(s) 4369 must be available.
+	Checking bd_mgmt rest api port: FAILED.
+		Port(s) 8080 must be available.
+	Checking haproxy stats: PASSED.
+	Checking erlang rpc ports: FAILED.
+		Port(s) 9000,9001 must be available.
+	Checking erlang ssh-rpc port: FAILED.
+		Port(s) 9002 must be available.
+	Checking nrpe access port: PASSED.
+	Checking nrpe access port for epic-nagios: FAILED.
+		Port(s) 5667 must be available.
+	Checking kerberos udp ports: PASSED.
+	Checking kerberos tcp ports: PASSED.
+	Checking HTTPFS ports: PASSED.
+	Checking HDFS Ports: PASSED.
+	Checking PCSD Daemon port: PASSED.
+	Checking Cluster Manager port: PASSED.
+	Checking Monitoring ports: PASSED.
+	Checking VxLAN tunnel port: PASSED.
+	Checking K8S-Calico BGP: PASSED.
+	Checking K8S-Calico Typha: PASSED.
+	Checking K8S-Kubernetes API server: PASSED.
+	Checking K8S-etcd server client API: PASSED.
+	Checking K8S-Kubelet API: PASSED.
+	Checking K8S-Kubernetes Scheduler: PASSED.
+	Checking K8S-Kubernetes Controller Manager: PASSED.
+	Checking EPIC VXLAN port: FAILED.
+		Port 4789 is unavailable.
+  Total: 28  --  Failed: 6  --  Warning: 0  --  Forced(success): 0
+
+
+Network configuration
+	Checking primary IP address: FAILED.
+		Multiple interfaces with IP address assignments found.
+		Use --controller-public-if to specify a public interface.
+	Checking FQDN of the host: FAILED.
+		Failed to determine FQDN as primary IP check failed.
+	Checking default gateway settings: PASSED.
+	Checking Proxy setting: PASSED.
+	Checking internet access: PASSED.
+  Total: 5  --  Failed: 2  --  Warning: 0  --  Forced(success): 0
+
+
+Operating system configuration
+	Checking OS type: PASSED.
+	Checking running kernel version: PASSED.
+	Checking CONFIG_SECCOMP enabled in kernel: PASSED.
+	Checking SELinux setting: WARNING.
+		SElinux is disabled.
+	Checking IPtables/Firewalld configuration: PASSED.
+	Checking automount configuration: PASSED.
+	Checking SSHD configuration: PASSED.
+	Checking rsyslog setting: PASSED.
+	Checking user and group specified: PASSED.
+	Checking dnsmasq user and group specified: PASSED.
+	Checking for krb5.keytab: PASSED.
+	Checking cgconfig kernel params: PASSED.
+  Total: 12  --  Failed: 0  --  Warning: 1  --  Forced(success): 0
+
+
+
+Filesystem free space checks.
+	Checking freespace on /: PASSED.
+	Checking freespace on /var/lib/docker: PASSED.
+	Checking configured swap size: PASSED.
+	Checking docker storage: FAILED.
+		DOCKER_STORAGE_OPTIONS is already set. It should empty.
+  Total: 4  --  Failed: 1  --  Warning: 0  --  Forced(success): 0
+
+***************************************************************************
+Aggregate tests summary:
+             Total : 52
+            Failed : 9
+           Warning : 1
+   Forced(success) : 0
+ERROR: Please fix the failure(s) before running the BlueData software installer.
+Additional information for debugging is written to /tmp/bd_prechecks.22524.log
+***************************************************************************
+
+
+STDERR:
+
+df: ‘/opt/bluedata/share/2/TenantShare’: Transport endpoint is not connected
+df: ‘/opt/bluedata/share/4/TenantShare’: Transport endpoint is not connected
+
+
+MSG:
+
+non-zero return code
+
+2020-05-25 07:28:43,980 p=22437 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 07:28:43,980 p=22437 u=root n=ansible | controller-node            : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-05-25 07:28:43,981 p=22437 u=root n=ansible | Monday 25 May 2020  07:28:43 -0400 (0:00:04.538)       0:00:04.662 ************ 
+2020-05-25 07:28:43,981 p=22437 u=root n=ansible | =============================================================================== 
+2020-05-25 07:28:43,981 p=22437 u=root n=ansible | pre-checks-hcp : Ensure pre-checks runs successfully. ------------------------------------------------------------------------------------------------------- 4.54s
+2020-05-25 07:28:43,982 p=22437 u=root n=ansible | pre-checks-hcp : include_tasks ------------------------------------------------------------------------------------------------------------------------------ 0.02s
+2020-05-25 08:07:14,763 p=8354 u=root n=ansible | PLAY [Prepare nodes before installing software.] *******************************************************************************************************************
+2020-05-25 08:07:14,776 p=8354 u=root n=ansible | TASK [prepare : include_tasks] *************************************************************************************************************************************
+2020-05-25 08:07:14,776 p=8354 u=root n=ansible | Monday 25 May 2020  08:07:14 -0400 (0:00:00.095)       0:00:00.095 ************ 
+2020-05-25 08:07:14,871 p=8354 u=root n=ansible | included: /root/prakash/hcp-ansible/playbooks/roles/prepare/tasks/prepare.yml for worker-node-3
+2020-05-25 08:07:14,875 p=8354 u=root n=ansible | TASK [prepare : Disable SELinux] ***********************************************************************************************************************************
+2020-05-25 08:07:14,875 p=8354 u=root n=ansible | Monday 25 May 2020  08:07:14 -0400 (0:00:00.099)       0:00:00.194 ************ 
+2020-05-25 08:07:16,074 p=8354 u=root n=ansible | ok: [worker-node-3]
+2020-05-25 08:07:16,078 p=8354 u=root n=ansible | PLAY RECAP *********************************************************************************************************************************************************
+2020-05-25 08:07:16,078 p=8354 u=root n=ansible | worker-node-3              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-05-25 08:07:16,079 p=8354 u=root n=ansible | Monday 25 May 2020  08:07:16 -0400 (0:00:01.203)       0:00:01.397 ************ 
+2020-05-25 08:07:16,079 p=8354 u=root n=ansible | =============================================================================== 
+2020-05-25 08:07:16,079 p=8354 u=root n=ansible | prepare : Disable SELinux ----------------------------------------------------------------------------------------------------------------------------------- 1.20s
+2020-05-25 08:07:16,080 p=8354 u=root n=ansible | prepare : include_tasks ------------------------------------------------------------------------------------------------------------------------------------- 0.10s

@@ -1,2 +1,4 @@
 ---
 # tasks file for gateway
+  - include_tasks: setup_gateway.yml
+    when: provision is defined

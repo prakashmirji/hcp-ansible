@@ -1,0 +1,10 @@
+---
+  - name: Ensure previous files and directories are clean before copy
+    command: rm -f /opt/bluedata/repositories/*
+    register: res
+    failed_when: res.rc != 0
+
+  - name: Ensure previous docker is removed
+    command: yum remove docker -y
+    register: res
+    failed_when: res.rc != 0

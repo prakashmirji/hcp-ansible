@@ -1,0 +1,19 @@
+---
+  - name: Prepare input file for epicctl.
+    template:
+      src: controller.j2
+      dest: /tmp/controller.yml
+      mode: 0640
+  
+  - name: Ensure to erase the previous install files on your local machine.
+    command: epicctl -n "OnPremSetup" -p {{ common.platform }} destroy
+    register: res
+    failed_when: res.rc != 0
+
+  - name: Run epicctl command to setup and configure controller node
+    command: epicctl op -f /tmp/controller.yml -n "OnPremSetup"
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+      msg: "{{ res.stdout }}"

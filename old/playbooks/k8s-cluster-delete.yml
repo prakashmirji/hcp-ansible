@@ -1,0 +1,9 @@
+---
+  - name: Decommission the k8s cluster.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: k8s-cluster
+        vars:
+          decommission: yes
+    when: k8s_cluster_delete | bool

@@ -1,0 +1,11 @@
+---
+  - name: Create k8s cluster.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: k8s-cluster
+        vars:
+          provision: yes
+          add-node: yes
+          #delete-node: no
+

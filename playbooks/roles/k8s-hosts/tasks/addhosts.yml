@@ -1,0 +1,14 @@
+---
+  - name: Prepare input file for epicctl to add k8s-hosts.
+    template:
+      src: k8shosts.j2
+      dest: /tmp/k8shosts.yml
+      mode: 0640
+
+  - name: Run epicctl command to setup and configure k8s hosts.
+    command: epicctl op -f /tmp/k8shosts.yml -n "OnPremSetup"
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+      msg: "{{ res.stdout }}"

@@ -1,14 +1,14 @@
 ---
-  - name: Disable SELinux.
-    selinux:
-      state: disabled
+- name: Disable SELinux.
+  selinux:
+    state: disabled
 
-  - name: Ensure servers are rebooted after changing the SELinux setting.
-    reboot:
-      reboot_timeout: 3600
+- name: Ensure servers are rebooted after changing the SELinux setting.
+  reboot:
+    reboot_timeout: 3600
 
-  - name: Wait for the SSH connection.
-    wait_for_connection:
-      delay: 10
-      sleep: 5
-      timeout: 300
+- name: Wait for the SSH connection.
+  wait_for_connection:
+    delay: 10
+    sleep: 5
+    timeout: 300

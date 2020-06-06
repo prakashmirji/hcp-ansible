@@ -1,2 +1,5 @@
 ---
 # tasks file for controller
+  #- include_tasks: cleanup.yml
+  - include_tasks: setup_controller.yml
+    when: provision is defined

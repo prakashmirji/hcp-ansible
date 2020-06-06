@@ -1,0 +1,8 @@
+---
+  - name: Provision gateway node.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: gateway
+        vars:
+          provision: yes

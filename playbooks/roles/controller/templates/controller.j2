@@ -1,0 +1,68 @@
+#controller config
+
+---
+op: Init
+platform: {{ common.platform }}
+parameters:
+  config:
+    api_scheme: http
+  host:
+    host_ip: {{ init.host_ip }}
+  ssh:
+    password: {{ credentials.ssh.password }}
+    username: {{ credentials.ssh.username }}
+
+---
+op: ControllerSetup
+platform: {{ common.platform }}
+parameters:
+  config:
+    #proxy_url: {{ common.proxy_url }}
+    url_bin_path: {{ controller.url_bin_path }}
+  host:
+    host_ip: {{ controller.host_ip }}
+  ssh:
+    password: {{ credentials.ssh.password }}
+    username: {{ credentials.ssh.username }}
+
+---
+op: GatewaySetup
+platform: {{ common.platform }}
+parameters:
+  config:
+    gateway_set_hostname: {{ gateway.gateway_set_hostname }}
+  host:
+    host_ip: {{ gateway.host_ip }}
+  ssh:
+    password: {{ credentials.ssh.password }}
+    username: {{ credentials.ssh.username }}
+
+---
+op: ControllerConfig
+platform: {{ common.platform }}
+parameters:
+  config:
+    bd_domain: {{ controller.bd_domain }}
+    bd_prefix: {{ controller. bd_prefix }}
+    hdfs_disks: {{ controller.hdfs_disks }}
+    no_tenant_isolation: {{ controller.no_tenant_isolation }}
+    no_tenant_storage: {{ controller.no_tenant_storage}}
+    node_disks: {{ controller.node_disks }}
+    int_start_ip: {{ controller.int_start_ip}}
+    int_end_ip: {{ controller.int_end_ip }}
+    int_gw_ip: {{ controller.int_gw_ip }}
+    int_nw_mask: {{ controller.int_nw_mask }}
+  host:
+    host_ip: {{ controller.host_ip }}
+  ssh:
+    password: {{ credentials.ssh.password }}
+    username: {{ credentials.ssh.username }}
+
+---
+op: GatewayConfig
+platform: {{ common.platform }}
+parameters:
+  config:
+    gateway_set_hostname: {{ gateway.gateway_set_hostname }}
+  host:
+    internal_ip: {{ gateway.host_ip }}

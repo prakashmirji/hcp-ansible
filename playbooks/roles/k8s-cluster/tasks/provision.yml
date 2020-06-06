@@ -1,29 +1,29 @@
 ---
-  - name: Get the session token
-    delegate_to: localhost
-    gather_facts:  false
-    uri:
-      url: "{{ hcp-controller.url }}/api/v2/session"
-      headers:
-        Accept: application/json
-        Content-Type: application/json
-      method: POST
-      timeout: 10
-      status_code:
-        - 201
-      body_format: json
-      body:
-        username: "{{  hcp-controller.username }}"
-        password: "{{  hcp-controller.password }}"
-        tenant_name: "{{  hcp-controller.tenant_name }}"
-    register: res
-  
-  - block:
+- name: Get the session token
+  delegate_to: localhost
+  gather_facts: false
+  uri:
+    url: "{{ hcp-controller.url }}/api/v2/session"
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+    method: POST
+    timeout: 10
+    status_code:
+      - 201
+    body_format: json
+    body:
+      username: "{{  hcp-controller.username }}"
+      password: "{{  hcp-controller.password }}"
+      tenant_name: "{{  hcp-controller.tenant_name }}"
+  register: res
+
+- block:
     - name: Create k8s cluster.
       delegate_to: localhost
       shell: |
         echo "{{ item }} added"
-      with_items: {{ k8sclusternodes }}
+      with_items: { { k8sclusternodes } }
       when: provision is defined
 
-    when: res is defined
+  when: res is defined
