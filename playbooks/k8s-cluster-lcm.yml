@@ -6,6 +6,6 @@
       - role: k8s-cluster
         vars:
           provision: yes
-          add-node: yes
-          #delete-node: no
+          addnode: no
+          deletenode: no
 

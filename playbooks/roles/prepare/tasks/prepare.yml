@@ -3,6 +3,11 @@
   selinux:
     state: disabled
 
+- name: Ensure previous docker is removed
+  command: yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine -y
+  register: res
+  failed_when: res.rc != 0
+
 - name: Ensure servers are rebooted after changing the SELinux setting.
   reboot:
     reboot_timeout: 3600

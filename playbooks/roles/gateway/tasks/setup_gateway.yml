@@ -5,7 +5,7 @@
       dest: /tmp/gateway.yml
       mode: 0640
 
-  - name: Run epicctl command to setup and configure controller node
+  - name: Run epicctl command to setup and configure gateway node
     command: epicctl op -f /tmp/gateway.yml -n "OnPremSetup"
     register: res
     failed_when: res.rc != 0

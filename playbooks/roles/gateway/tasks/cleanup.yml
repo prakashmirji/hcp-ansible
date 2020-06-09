@@ -3,3 +3,13 @@
     command: yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine -y
     register: res
     failed_when: res.rc != 0
+
+  - name: Ensure ports are free before installing controller.
+    command: "{{ item }}"
+    register: res
+    failed_when: false
+    with_items:
+    - "pkill -9 httpd"
+    - "pkill -9 haproxy"
+    - "pkill -9 beam.smp"
+  

@@ -13,7 +13,8 @@
   - name: Run epicctl command to setup and configure controller node
     command: epicctl op -f /tmp/controller.yml -n "OnPremSetup"
     register: res
-    failed_when: res.rc != 0
+    #failed_when: res.rc != 0
+    failed_when: false
 
   - debug:
       msg: "{{ res.stdout }}"

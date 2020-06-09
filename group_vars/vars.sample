@@ -3,6 +3,7 @@
 kits_dir: /root/R2F06-70004
 bundle_name: hpe-cp-rhel-release-5.1-1440.bin
 
+
 # system settings
 ntp_servers: ['time.google.com']
 
@@ -20,18 +21,17 @@ k8s-hosts:
 credentials:
   ssh:
     username: root
-    password: HP!nvent123
+    password: mypassword
 
 common:
   platform: onprem
-  proxy_url: http://web-proxy.corp.hpecorp.net:8080
+  proxy_url: http://myproxy.net:8080
 
 init:
   host_ip: 10.1.10.20
 
 controller:
-  #url_bin_path:  https://bluedata-releases.s3.amazonaws.com/GLDrops/hpe-cp-epic-release-5.1-1289.bin
-  url_bin_path: https://bluedata-releases.s3.amazonaws.com/GLDrops/hpe-cp-rhel-release-5.1-1440.bin
+  url_bin_path:  https://mys3.bin
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
@@ -44,6 +44,7 @@ controller:
   int_gw_ip: 172.20.0.1
   int_nw_mask: 16
 
+# for epic cluster
 worker:
   host_ip_1: 10.1.10.21
   host_ip_2: 10.1.10.22
@@ -51,6 +52,7 @@ worker:
   hdfs_disks: /dev/sdc
   node_disks: /dev/sdb
 
+# for k8s cluster
 k8shost:
   host_ip_1: 10.1.10.21
   host_ip_2: 10.1.10.22

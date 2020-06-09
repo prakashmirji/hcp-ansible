@@ -1,4 +1,6 @@
 ---
 # tasks file for gateway
+  - include_tasks: cleanup.yml
+    when: cleanup is defined
   - include_tasks: setup_gateway.yml
     when: provision is defined

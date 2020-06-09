@@ -3,8 +3,8 @@
     when: provision is defined
 
   - include_tasks: add-node.yml
-    when: add-node is defined
+    when: addnode is true
 
   - include_tasks: delete-node.yml
-    when: delete-node is defined
+    when: deletenode is true
 

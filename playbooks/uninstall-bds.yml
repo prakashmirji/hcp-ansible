@@ -1,0 +1,8 @@
+---
+  - name: Prepare nodes before installing software.
+    hosts: allnodes
+    gather_facts: false
+    roles:
+      - role: uninstall-bds
+        vars:
+          uninstall: true

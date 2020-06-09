@@ -1,4 +1,12 @@
 ---
+  - name: Cleanup controller nodes
+    hosts: controller
+    gather_facts: false
+    roles:
+      - role: controller
+        vars:
+          cleanup: yes
+
   - name: Provision controller nodes
     hosts: localhost
     gather_facts: false

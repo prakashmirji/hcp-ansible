@@ -1,0 +1,9 @@
+---
+  - name: Check if script under bundles exists.
+    stat:
+      path: /opt/bluedata/bundles/{{ bundles_name }}/startscript.sh
+    register: res
+
+  - name: Uninstall software.
+    command: /opt/bluedata/bundles/{{ bundles_name }}/startscript.sh -a erase
+    when: res.stat.exists == True

@@ -1,4 +1,12 @@
 ---
+  - name: Cleanup gateway nodes
+    hosts: gateway
+    gather_facts: false
+    roles:
+      - role: controller
+        vars:
+          cleanup: yes
+
   - name: Provision gateway node.
     hosts: localhost
     gather_facts: false

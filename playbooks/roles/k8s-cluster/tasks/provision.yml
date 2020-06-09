@@ -1,29 +1,14 @@
 ---
-- name: Get the session token
-  delegate_to: localhost
-  gather_facts: false
-  uri:
-    url: "{{ hcp-controller.url }}/api/v2/session"
-    headers:
-      Accept: application/json
-      Content-Type: application/json
-    method: POST
-    timeout: 10
-    status_code:
-      - 201
-    body_format: json
-    body:
-      username: "{{  hcp-controller.username }}"
-      password: "{{  hcp-controller.password }}"
-      tenant_name: "{{  hcp-controller.tenant_name }}"
-  register: res
+  - name: Prepare input file for epicctl.
+    template:
+      src: create_k8scluster.j2
+      dest: /tmp/create_k8scluster.json
+      mode: 0640
+  
+  - name: Create k8s cluster with epicctl and rest api.
+    command: epicctl api post -u "/api/v2/k8scluster/" -f /tmp/create_k8scluster.json -n "OnPremSetup" -p {{ common.platform }}
+    register: res
+    failed_when: res.rc != 0
 
-- block:
-    - name: Create k8s cluster.
-      delegate_to: localhost
-      shell: |
-        echo "{{ item }} added"
-      with_items: { { k8sclusternodes } }
-      when: provision is defined
-
-  when: res is defined
+  - debug:
+     msg: "{{ res.stdout }}"

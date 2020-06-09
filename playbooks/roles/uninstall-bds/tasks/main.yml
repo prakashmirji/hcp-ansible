@@ -1,0 +1,4 @@
+---
+# tasks file for uninstall-bds
+  - include_tasks: uninstall-bds.yml
+    when: uninstall is true
