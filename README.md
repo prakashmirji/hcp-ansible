@@ -24,11 +24,15 @@ Note: This repo has basic framework to get started, we will be adding more funct
   - I as a system admin wants to update the hosts/nodes and configure them consistently
 
 ### Pre-reqs
-
+        - Linux machine with ansible 2.9.x and python3.8.2
+        - 5 nodes with centos 7.6 or up
 ### How to setup your development env
 
 ### How to test
 ```
+rename group_vars/all/vars.sample to group_vars/all/vars.yml
+update the values in vars.yml
+then run below command
 ansible-playbooks -i hosts site.yml
 or
 ansible-playbooks -i hosts playbooks/prepare.yml
