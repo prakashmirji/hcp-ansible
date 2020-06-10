@@ -1,6 +1,9 @@
 ---
   - name: Prepare nodes before installing software.
-    hosts: allnodes
+    # --erase option. Erase BlueData Software on the host. When
+    # invoked on the controller this will erase the
+    # software in any workers as well.
+    hosts: controller
     gather_facts: false
     roles:
       - role: uninstall-bds
