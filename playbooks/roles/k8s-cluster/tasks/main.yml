@@ -1,10 +1,13 @@
 ---
   - include_tasks: provision.yml
-    when: provision is defined
+    when: provision is true
 
   - include_tasks: add-node.yml
     when: addnode is true
 
   - include_tasks: delete-node.yml
     when: deletenode is true
+  
+  - include_tasks: deletecluster.yml
+    when: decommission is true
 

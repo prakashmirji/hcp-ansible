@@ -5,5 +5,5 @@
     roles:
       - role: k8s-cluster
         vars:
-          decommission: yes
-    when: k8s_cluster_delete | bool
+          decommission: true
+    #when: k8s_cluster_delete | bool
