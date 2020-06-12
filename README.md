@@ -3,7 +3,7 @@
 ### Introduction
 This repo hosts the ansible playbooks to deploy and configure HPE Container Platform
 
-### Use cases
+### Use cases ( mvp 1.0 )
   - I as a user wants to prepare the environment ( OS installation with right packages )
   - I as a user wants to have option to run pre-checks before I start installing the bits
   - I as a user wants to install/deploy HPE container platform bits with playbooks ( configure controller and gateway )
@@ -31,11 +31,11 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
         - update the values in vars.yml as per your environment
         - update hosts inventory file
         - then run below command ( note: you may edit site.yml before running playbooks)
-```
-ansible-playbooks -i hosts site.yml
-or
-ansible-playbooks -i hosts playbooks/controller.yml
-```
+        ```
+        ansible-playbooks -i hosts site.yml
+        or
+        ansible-playbooks -i hosts playbooks/controller.yml
+        ```
 ### Current staus
 
 Following playbooks are working:
