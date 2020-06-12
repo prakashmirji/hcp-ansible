@@ -3,21 +3,6 @@
 kits_dir: /root/R2F06-70004
 bundle_name: hpe-cp-rhel-release-5.1-1440.bin
 
-
-# system settings
-ntp_servers: ['time.google.com']
-
-#hcp controller
-hcp-controller:
-  url: https://gateway-node.v0010.gselr5.local:8080
-  username: admin
-  password: admin@123
-  tenant_name: prakash-test
-
-k8s-hosts:
-  username: root
-  password: root
-
 credentials:
   ssh:
     username: root
@@ -31,7 +16,7 @@ init:
   host_ip: 10.1.10.20
 
 controller:
-  url_bin_path:  https://mys3.bin
+  url_bin_path:  https://mys3-software-bundle.bin
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
@@ -45,7 +30,7 @@ controller:
   int_nw_mask: 16
 
 # for epic cluster
-worker:
+epic-nodes:
   host_ip_1: 10.1.10.21
   host_ip_2: 10.1.10.22
   host_ip_3: 10.1.10.23
@@ -79,4 +64,5 @@ k8scluster:
   pod_dns_domain: "cluster.local"
   persistent_storage: 
     nimble_csi: false
+  delete_cluster_id: 8
 
