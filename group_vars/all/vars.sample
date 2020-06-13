@@ -3,18 +3,21 @@
 kits_dir: /root/R2F06-70004
 bundle_name: hpe-cp-rhel-release-5.1-1440.bin
 
+# credentials
+# Assumption: ssh credentials are same for all nodes
 credentials:
   ssh:
     username: root
     password: mypassword
 
 common:
-  platform: onprem
+  platform: onprem  # option used in epicctl to deploy on on-prem
   proxy_url: http://myproxy.net:8080
 
 init:
-  host_ip: 10.1.10.20
+  host_ip: 10.1.10.20  # controller ip
 
+# controller setup and configure
 controller:
   url_bin_path:  https://mys3-software-bundle.bin
   host_ip: 10.1.10.20
@@ -30,7 +33,7 @@ controller:
   int_nw_mask: 16
 
 # for epic cluster
-epic-nodes:
+epic_nodes:
   host_ip_1: 10.1.10.21
   host_ip_2: 10.1.10.22
   host_ip_3: 10.1.10.23
@@ -45,10 +48,12 @@ k8shost:
   ephemeral_disks: /dev/sdc
   persistent_disks: /dev/sdb
 
+# gateway setup and configure
 gateway:
   gateway_set_hostname: gateway-node.v0010.gselr5.local
   host_ip: 10.1.10.24
 
+# K8s cluster management
 k8scluster:
   name: cluster01
   description: "my first cluster"
@@ -66,3 +71,29 @@ k8scluster:
     nimble_csi: false
   delete_cluster_id: 8
 
+# Tenant management
+k8stenant:
+  name: test01
+  description: "my first tenant01"
+  tenant_type_info:
+    map_services_to_gateway: true
+    specified_namespace_name: test01
+    is_namespace_owner: true
+    adopt_existing_namespace: false
+  tenant_type: k8s
+  features:
+    ml_project: false
+  is_namespace_owner: true
+  quota:
+    memory: 20480 # 20x1024
+    persistent: 35840 # 35x1024
+    gpus: ""
+    cores: 12
+    disk: 25600 # 25x1024
+    tenant_storage: 30
+  k8s_cluster: /api/v2/k8scluster/9 # TODO, use name and do GET /k8scluster to get the url
+  specified_namespace_name: test01
+  map_services_to_gateway: true
+  adopt_existing_namespace: false
+  krb_enc_types: []
+  tenant_delete_id: 18 # TODO change value to name instead of id
