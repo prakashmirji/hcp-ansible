@@ -21,8 +21,8 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
   - I as a k8s admin wants to create and manage tenants
 
 ### Pre-reqs
-        - Linux machine with ansible 2.9.x and python3.8.2
-        - 5 nodes with centos 7.6 or up or RHEL
+        - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but mightt work other versions too)
+        - 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES)
         - epicctl tool
 ### How to setup your development env
         - TODO
@@ -31,6 +31,7 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
         - update the values in vars.yml as per your environment
         - update hosts inventory file
         - then run below command ( note: you may edit site.yml before running playbooks)
+
         ```
         ansible-playbooks -i hosts site.yml
         or

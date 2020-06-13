@@ -1,0 +1,26 @@
+---
+  - name: Delete k8s tenant with epicctl and rest api.
+    # TODO: get the tenant url using the name
+    command: epicctl api delete -u "/api/v1/tenant/{{ k8stenant.tenant_delete_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/delete-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+     msg: "{{ res.stdout }}"
+
+  # TODO: check: deleteing tenant doesn't take much time,
+  # instead of polling , it is good idea to check htto status code for 204
+
+  # - name: Poll the status of tenant delete by making get call to /api/v1/tenant/tenant_id
+  #   command: epicctl api get -u "/api/v1/tenant/{{ k8stenant.tenant_delete_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/get-response.json
+  #   vars:
+  #     getResp: "{{ (lookup('file', '/tmp/get-response.json') | from_json)['status'] }}"
+  #   register : res
+  #   failed_when: false # when resource is deleted, last get call returns 404, don't want to fail it
+  #   changed_when: false
+  #   retries: 30
+  #   delay: 10
+  #   until:  '"deleting" != getResp'
+
+  # - debug:
+  #     msg: "{{ res.stdout }}"

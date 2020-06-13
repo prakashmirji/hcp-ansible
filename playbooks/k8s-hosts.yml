@@ -1,5 +1,5 @@
 ---
-  - name: Provision gateway node.
+  - name: Add k8s-hosts into cluster and install bundle.
     hosts: localhost
     gather_facts: false
     roles:

@@ -1,0 +1,10 @@
+---
+  - name: k8s tenants LCM.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: k8s-tenants
+        vars:
+          createtenant: true
+          updatetenant: false
+          deletetenant: false

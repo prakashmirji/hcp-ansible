@@ -1,5 +1,5 @@
 ---
-  - include_tasks: provision.yml
+  - include_tasks: create_cluster.yml
     when: provision is true
 
   - include_tasks: add-node.yml
@@ -8,6 +8,6 @@
   - include_tasks: delete-node.yml
     when: deletenode is true
   
-  - include_tasks: deletecluster.yml
+  - include_tasks: delete_cluster.yml
     when: decommission is true
 

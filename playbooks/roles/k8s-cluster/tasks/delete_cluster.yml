@@ -1,12 +1,13 @@
 ---
   - name: Delete k8s cluster with epicctl and rest api.
+    # TODO: get the cluster url using the name
     command: epicctl api delete -u "/api/v2/k8scluster/{{ k8scluster.delete_cluster_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/delete-response.json
     register: res
     failed_when: res.rc != 0
 
   - debug:
      msg: "{{ res.stdout }}"
-
+  
   - name: Poll the status of cluster delete by making get call to /api/v2/k8scluster/k8scluster_id
     command: epicctl api get -u "/api/v2/k8scluster/{{ k8scluster.delete_cluster_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/get-response.json
     vars:

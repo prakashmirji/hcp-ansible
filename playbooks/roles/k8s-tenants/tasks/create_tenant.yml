@@ -1,0 +1,39 @@
+---
+  - name: Prepare input file for epicctl to create tenant.
+    template:
+      src: create_tenant.j2
+      dest: /tmp/create_k8stenant.json
+      mode: 0640
+  
+  - name: Create k8s tenant with epicctl and rest api.
+    command: epicctl api post -u "/api/v1/tenant/" -f /tmp/create_k8stenant.json -n "OnPremSetup" -p {{ common.platform }} -o /tmp/post-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+     msg: "{{ res.stdout }}"
+  
+  - name: Check if response file exists.
+    stat:
+      path: /tmp/post-response.json
+    register: output
+
+  - name: Read response json file created during tenant creation
+    set_fact:
+      jsonResp: "{{ (lookup('file', '/tmp/post-response.json') | from_json)['location'] }}"
+    when: output.stat.exists == True
+
+  - name: Poll the status of tenant creation by making get call to /api/v1/tenant/tenant_id
+    command: epicctl api get -u {{ jsonResp }} -n "OnPremSetup" -p {{ common.platform }} -o /tmp/get-response.json
+    vars:
+      getResp: "{{ (lookup('file', '/tmp/get-response.json') | from_json)['status'] }}"
+    register : res
+    failed_when: res.rc != 0
+    changed_when: false
+    retries: 20
+    delay: 60
+    until:  '"ready" == getResp'
+
+  - debug:
+      msg: "polling task finished for tenant creation"
+
