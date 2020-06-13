@@ -21,7 +21,7 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
   - I as a k8s admin wants to create and manage tenants
 
 ### Pre-reqs
-        - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but mightt work other versions too)
+        - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
         - 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES)
         - epicctl tool
 ### How to setup your development env
@@ -32,11 +32,11 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
         - update hosts inventory file
         - then run below command ( note: you may edit site.yml before running playbooks)
 
-        ```
-        ansible-playbooks -i hosts site.yml
+        
+        >ansible-playbooks -i hosts site.yml
         or
-        ansible-playbooks -i hosts playbooks/controller.yml
-        ```
+        >ansible-playbooks -i hosts playbooks/controller.yml
+        
 ### Current staus
 
 Following playbooks are working:
@@ -49,6 +49,7 @@ Following playbooks are working:
         - import_playbook: playbooks/k8s-hosts.yml
         - import_playbook: playbooks/k8s-cluster-lcm.yml
         - import_playbook: playbooks/k8s-cluster-delete.yml
+        - import_playbook: playbooks/k8s-tenant.yml # support create and delete tenant
 
 ### Troubleshooting
         TODO
