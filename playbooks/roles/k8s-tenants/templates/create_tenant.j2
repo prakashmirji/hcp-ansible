@@ -22,7 +22,7 @@
     "disk": {{ k8stenant.quota.disk }},
     "tenant_storage": {{ k8stenant.quota.tenant_storage }}
   },
-  "k8s_cluster": "{{ k8stenant.k8s_cluster }}",
+  "k8s_cluster": "{{ k8s_cluster }}",
   "specified_namespace_name": "{{ k8stenant.specified_namespace_name }}",
   "map_services_to_gateway": {{ k8stenant.map_services_to_gateway | bool | lower }},
   "adopt_existing_namespace": {{ k8stenant.adopt_existing_namespace | bool | lower }},

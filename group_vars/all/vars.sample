@@ -13,6 +13,7 @@ credentials:
 common:
   platform: onprem  # option used in epicctl to deploy on on-prem
   proxy_url: http://myproxy.net:8080
+  name: OnPremSetup
 
 init:
   host_ip: 10.1.10.20  # controller ip
@@ -91,9 +92,8 @@ k8stenant:
     cores: 12
     disk: 25600 # 25x1024
     tenant_storage: 30
-  k8s_cluster: /api/v2/k8scluster/9 # TODO, use name and do GET /k8scluster to get the url
+  k8s_cluster: cluster01
   specified_namespace_name: test01
   map_services_to_gateway: true
   adopt_existing_namespace: false
   krb_enc_types: []
-  tenant_delete_id: 18 # TODO change value to name instead of id

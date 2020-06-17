@@ -5,6 +5,6 @@
     roles:
       - role: k8s-tenants
         vars:
-          createtenant: true
+          createtenant: false
           updatetenant: false
-          deletetenant: false
+          deletetenant: true

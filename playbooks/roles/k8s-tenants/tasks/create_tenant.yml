@@ -1,4 +1,26 @@
 ---
+  - name: Get the k8s cluster URI using the k8s cluster name.
+    command: epicctl api get -u "/api/v2/k8scluster/" -n {{ common.name }} -p {{ common.platform }} -r {{ k8stenant.k8s_cluster }} -o /tmp/get-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - name: Check if response file exists.
+    stat:
+      path: /tmp/get-response.json
+    register: output
+
+  - name: Parse json to retrieve the tenant URI.
+    set_fact:
+      jsondata: "{{ lookup('file', '/tmp/get-response.json') | from_json }}"
+    when: output.stat.exists == True
+
+  - name: Set the k8s_cluster variable.
+    set_fact:
+      k8s_cluster: "{{ jsondata._links.self.href }}"
+
+  - debug:
+      msg: "{{ k8s_cluster }}"
+
   - name: Prepare input file for epicctl to create tenant.
     template:
       src: create_tenant.j2
