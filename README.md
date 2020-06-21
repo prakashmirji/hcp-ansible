@@ -1,15 +1,15 @@
 ## hcp-ansible
 
 ### Introduction
-This repo hosts the ansible playbooks to deploy and configure HPE Container Platform
+This repo hosts the ansible playbooks to deploy and configure HPE Container Platform ( HPE CP)
 
-### Use cases ( mvp 1.0 )
+### Use cases in mvp 1.0
   - I as a user wants to prepare the environment ( OS installation with right packages )
   - I as a user wants to have option to run pre-checks before I start installing the bits
-  - I as a user wants to install/deploy HPE container platform bits with playbooks ( configure controller and gateway )
+  - I as a user wants to install/deploy HPE CP management software
 
-          - with HPE best practices
-          - with consistent behavior
+          - controller node
+          - gateway node
   - I as a k8s admin user wants to add and install k8s hosts
   - I as a k8s admin user wants do life cycle management (LCM) operations on my k8s cluster
   
@@ -17,14 +17,18 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
           - delete cluster
           - update cluster
           - add/remove hosts
-  - I as a user wants to automate the LCM of the HPE container platform with playbooks
   - I as a k8s admin wants to create and manage tenants
+  - manage user roles
+  
+### Use cases in mvp 2.0
+        TODO
 
 ### Pre-reqs
         - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
         - 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES)
         - epicctl tool
         - jq tool
+        - HPE CP bundle ( tested with pulling it from s3 bucket)
 
 ### How to setup your development env
         - TODO
@@ -49,9 +53,8 @@ Following playbooks are working:
         - import_playbook: playbooks/controller.yml
         - import_playbook: playbooks/gateway.yml
         - import_playbook: playbooks/k8s-hosts.yml
-        - import_playbook: playbooks/k8s-cluster-lcm.yml
-        - import_playbook: playbooks/k8s-cluster-delete.yml
-        - import_playbook: playbooks/k8s-tenant.yml # support create and delete tenant
+        - import_playbook: playbooks/k8s-cluster.yml
+        - import_playbook: playbooks/k8s-tenant.yml
 
 ### Troubleshooting
         TODO
