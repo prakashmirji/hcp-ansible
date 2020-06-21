@@ -1,0 +1,8 @@
+---
+  - name: Delete file if present
+    file:
+      state: absent
+      path: /tmp/create_k8shosts.yml
+
+  - include_tasks: prepare_addhosts.yml
+    with_items: "{{ k8shosts.host_pools }}"

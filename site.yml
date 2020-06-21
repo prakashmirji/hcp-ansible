@@ -5,5 +5,5 @@
   - import_playbook: playbooks/controller.yml
   - import_playbook: playbooks/gateway.yml
   - import_playbook: playbooks/k8s-hosts.yml
-  - import_playbook: playbooks/k8s-cluster-lcm.yml
-  #- import_playbook: playbooks/k8s-cluster-delete.yml
+  - import_playbook: playbooks/k8s-cluster.yml
+  - import_playbook: playbooks/k8s-tenant.yml

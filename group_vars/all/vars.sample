@@ -1,26 +1,24 @@
 ---
-# Kits directory on controller-node
-kits_dir: /root/R2F06-70004
-bundle_name: hpe-cp-rhel-release-5.1-1440.bin
+# This bundle is used to locate the script location
+bundle_name: hpe-cp-rhel-release-5.1-1440
 
-# credentials
-# Assumption: ssh credentials are same for all nodes
+# ssh credentials for the host_pools
+# It is assumed that all hosts have same root password
 credentials:
   ssh:
     username: root
-    password: mypassword
+    password: password123
 
 common:
-  platform: onprem  # option used in epicctl to deploy on on-prem
-  proxy_url: http://myproxy.net:8080
+  platform: onprem
+  proxy_url: http://my-company.proxy.net:8080
   name: OnPremSetup
 
 init:
-  host_ip: 10.1.10.20  # controller ip
+  host_ip: 10.1.10.20 # controller node ip
 
-# controller setup and configure
 controller:
-  url_bin_path:  https://mys3-software-bundle.bin
+  url_bin_path: https://s3bucket.bundle.bin # s3 bucket url where bundle is stored
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
@@ -33,46 +31,46 @@ controller:
   int_gw_ip: 172.20.0.1
   int_nw_mask: 16
 
-# for epic cluster
-epic_nodes:
-  host_ip_1: 10.1.10.21
-  host_ip_2: 10.1.10.22
-  host_ip_3: 10.1.10.23
-  hdfs_disks: /dev/sdc
-  node_disks: /dev/sdb
+# TODO
+# epic_hosts:
 
 # for k8s cluster
-k8shost:
-  host_ip_1: 10.1.10.21
-  host_ip_2: 10.1.10.22
-  host_ip_3: 10.1.10.23
+k8shosts:
+  host_pools:
+    - name: worker1
+      host: 10.1.10.21
+    - name: worker2
+      host: 10.1.10.22
+    - name: worker3
+      host: 10.1.10.23
   ephemeral_disks: /dev/sdc
   persistent_disks: /dev/sdb
 
-# gateway setup and configure
 gateway:
   gateway_set_hostname: gateway-node.v0010.gselr5.local
   host_ip: 10.1.10.24
 
-# K8s cluster management
 k8scluster:
   name: cluster01
   description: "my first cluster"
   # TODO: get the host url through API
-  master:
-    - 4  # /api/v2/worker/k8shost/4 ( 10.1.10.23)
-  worker:
-    - 3  # /api/v2/worker/k8shost/3 ( 10.1.10.21)
-    - 5  # /api/v2/worker/k8shost/5 ( 10.1.10.22)
+  host_pools:
+    - name: master-pool
+      role: master
+      host: "10.1.10.23" # ip address of the node
+    - name: worker-pool
+      role: worker
+      host: "10.1.10.21"
+    - name: worker-pool
+      role: worker
+      host: "10.1.10.22"
   k8sversion: "1.17.5"
   pod_network_range: "10.244.0.0/16"
   service_network_range: "10.96.0.0/16"
   pod_dns_domain: "cluster.local"
   persistent_storage: 
     nimble_csi: false
-  delete_cluster_id: 8
 
-# Tenant management
 k8stenant:
   name: test01
   description: "my first tenant01"

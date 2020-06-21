@@ -1,6 +1,6 @@
 {
   "label" : {"name": "{{ k8scluster.name }}", "description" : "{{ k8scluster.description }}"},
-  "k8shosts_config" : [{"role" : "master", "node": "/api/v2/worker/k8shost/{{ k8scluster.master[0] }}"},{"role" : "worker", "node": "/api/v2/worker/k8shost/{{ k8scluster.worker[0] }}"},{"role" : "worker", "node": "/api/v2/worker/k8shost/{{ k8scluster.worker[1] }}"}],
+  "k8shosts_config" : [],
   "k8s_version" : "{{ k8scluster.k8sversion }}",
   "pod_network_range" : "{{ k8scluster.pod_network_range }}",
   "service_network_range" : "{{ k8scluster.service_network_range }}",

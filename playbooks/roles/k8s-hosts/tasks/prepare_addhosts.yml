@@ -1,0 +1,14 @@
+---
+  - name: Seet the host ip variable
+    set_fact:
+      k8shost_ip: "{{ item.host }}"
+  - name: Prepare yaml file for epicctl using template.
+    template:
+      src: k8shosts.j2
+      dest: /tmp/create_k8shosts_tmp.yml
+      mode: 0640
+  
+  - name: Append the previous template content to a file
+    shell: cat /tmp/create_k8shosts_tmp.yml >> /tmp/create_k8shosts.yml
+    register: res
+    failed_when: res.rc != 0

@@ -1,6 +1,6 @@
 ---
   - name: Get the tenant URI using the tenant name.
-    command: epicctl api get -u /api/v1/tenant -n {{ common.name }} -p {{ common.platform }} -r {{ k8stenant.name }} -o /tmp/get-response.json
+    command: epicctl api get -u /api/v1/tenant -n {{ common.name }} -p {{ common.platform }} --jsonpath "._embedded.tenants" -o /tmp/get-response.json
     register: res
     failed_when: res.rc != 0
 
@@ -11,14 +11,20 @@
 
   - name: Parse json to retrieve the tenant URI.
     set_fact:
-      tenant_uri: "{{ lookup('file', '/tmp/get-response.json') | from_json }}"
+      tenants: "{{ lookup('file', '/tmp/get-response.json') | from_json }}"
     when: output.stat.exists == True
 
+  - name: Set the tenant_uri variable.
+    set_fact:
+      tenant_uri: "{{ item._links.self.href }}"
+    with_items: "{{ tenants }}"
+    when: item.label.name  == "{{ k8stenant.name }}"
+
   - debug:
-      msg: "{{ tenant_uri._links.self.href }}"
+      msg: "{{ tenant_uri }}"
 
   - name: Delete k8s tenant with epicctl and rest api.
-    command: epicctl api delete -u "{{ tenant_uri._links.self.href }}" -n "{{ common.name }}" -p {{ common.platform }} -o /tmp/delete-response.json
+    command: epicctl api delete -u "{{ tenant_uri }}" -n "{{ common.name }}" -p {{ common.platform }} -o /tmp/delete-response.json
     register: res
     failed_when: res.rc != 0
 

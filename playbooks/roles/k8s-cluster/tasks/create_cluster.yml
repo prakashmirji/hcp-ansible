@@ -1,10 +1,4 @@
 ---
-  - name: Prepare input file for epicctl.
-    template:
-      src: create_k8scluster.j2
-      dest: /tmp/create_k8scluster.json
-      mode: 0640
-  
   - name: Create k8s cluster with epicctl and rest api.
     command: epicctl api post -u "/api/v2/k8scluster/" -f /tmp/create_k8scluster.json -n "OnPremSetup" -p {{ common.platform }} -o /tmp/post-response.json
     register: res

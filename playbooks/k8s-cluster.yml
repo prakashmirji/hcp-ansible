@@ -7,5 +7,13 @@
         vars:
           provision: true
           addnode: false
+
+  - name: Delete k8s cluster.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: k8s-cluster
+        vars:
           deletenode: false
+          decommission: false
 

@@ -1,10 +1,10 @@
 ---
-  #- include_tasks: provision.yml
-  #  when: provision is defined
+  - include_tasks: add_pool.yml
+    when: addhosts is true
 
   - include_tasks: addhosts.yml
-    when: addhosts is defined
+    when: addhosts is true
 
-  #- include_tasks: delete-node.yml
-  #  when: delete-node is defined
+  - include_tasks: delete_pool.yml
+    when: deletehosts is true
 

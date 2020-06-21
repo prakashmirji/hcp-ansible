@@ -5,4 +5,14 @@
     roles:
       - role: k8s-hosts
         vars:
-          addhosts: yes
+          addhosts: true
+
+  - name: Delete k8s-hosts from cluster.
+    hosts: localhost
+    gather_facts: false
+    roles:
+      - role: k8s-hosts
+        vars:
+          deletehosts: false
+          delete_pools:
+            - host: 10.1.10.22

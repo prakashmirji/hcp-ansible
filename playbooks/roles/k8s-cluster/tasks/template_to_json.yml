@@ -1,0 +1,6 @@
+---
+  - name: Prepare json file for epicctl using template.
+    template:
+      src: create_k8scluster.j2
+      dest: /tmp/create_k8scluster.json
+      mode: 0640

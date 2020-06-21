@@ -3,25 +3,7 @@ op: K8sHostSetup
 platform: {{ common.platform }}
 parameters:
   host:
-    host_ip: {{ k8shost.host_ip_1 }}
-  ssh:
-    password: {{ credentials.ssh.password }}
-    username: {{ credentials.ssh.username }}
----
-op: K8sHostSetup
-platform: {{ common.platform }}
-parameters:
-  host:
-    host_ip: {{ k8shost.host_ip_2 }}
-  ssh:
-    password: {{ credentials.ssh.password }}
-    username: {{ credentials.ssh.username }}
----
-op: K8sHostSetup
-platform: {{ common.platform }}
-parameters:
-  host:
-    host_ip: {{ k8shost.host_ip_3 }}
+    host_ip: {{ k8shost_ip }}
   ssh:
     password: {{ credentials.ssh.password }}
     username: {{ credentials.ssh.username }}
@@ -30,37 +12,7 @@ op: K8sHostConfig
 platform: {{ common.platform }}
 parameters:
   config:
-    ephemeral_disks: {{ k8shost.ephemeral_disks }}
-    persistent_disks: {{ k8shost.persistent_disks }}
+    ephemeral_disks: {{ k8shosts.ephemeral_disks }}
+    persistent_disks: {{ k8shosts.persistent_disks }}
   host:
-    internal_ip: {{ k8shost.host_ip_1 }}
-
----
-op: K8sHostConfig
-platform: {{ common.platform }}
-parameters:
-  config:
-    ephemeral_disks: {{ k8shost.ephemeral_disks }}
-    persistent_disks: {{ k8shost.persistent_disks }}
-  host:
-    internal_ip: {{ k8shost.host_ip_1 }}
-
----
-op: K8sHostConfig
-platform: {{ common.platform }}
-parameters:
-  config:
-    ephemeral_disks: {{ k8shost.ephemeral_disks }}
-    persistent_disks: {{ k8shost.persistent_disks }}
-  host:
-    internal_ip: {{ k8shost.host_ip_2 }}
-
----
-op: K8sHostConfig
-platform: {{ common.platform }}
-parameters:
-  config:
-    ephemeral_disks: {{ k8shost.ephemeral_disks }}
-    persistent_disks: {{ k8shost.persistent_disks }}
-  host:
-    internal_ip: {{ k8shost.host_ip_3 }}
+    internal_ip: {{ k8shost_ip }}

@@ -24,6 +24,7 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
         - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
         - 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES)
         - epicctl tool
+        - jq tool
 
 ### How to setup your development env
         - TODO

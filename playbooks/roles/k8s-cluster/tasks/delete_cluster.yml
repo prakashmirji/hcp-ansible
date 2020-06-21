@@ -1,7 +1,30 @@
 ---
+  - name: Get the k8s cluster json response.
+    command: epicctl api get -u /api/v2/k8scluster -n {{ common.name }} -p {{ common.platform }} --jsonpath "._embedded.k8sclusters" -o /tmp/get-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - name: Check if response file exists.
+    stat:
+      path: /tmp/get-response.json
+    register: output
+
+  - name: Parse json to retrieve the tenant URI.
+    set_fact:
+      k8sclusters: "{{ lookup('file', '/tmp/get-response.json') | from_json }}"
+    when: output.stat.exists == True
+
+  - name: Set the k8scluster_uri variable.
+    set_fact:
+      k8scluster_uri: "{{ item._links.self.href }}"
+    with_items: "{{ k8sclusters }}"
+    when: item.label.name == "{{ k8scluster.name }}"
+
+  - debug:
+      msg: "{{ k8scluster_uri }}"
+
   - name: Delete k8s cluster with epicctl and rest api.
-    # TODO: get the cluster url using the name
-    command: epicctl api delete -u "/api/v2/k8scluster/{{ k8scluster.delete_cluster_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/delete-response.json
+    command: epicctl api delete -u "{{ k8scluster_uri }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/delete-response.json
     register: res
     failed_when: res.rc != 0
 
@@ -9,7 +32,7 @@
      msg: "{{ res.stdout }}"
   
   - name: Poll the status of cluster delete by making get call to /api/v2/k8scluster/k8scluster_id
-    command: epicctl api get -u "/api/v2/k8scluster/{{ k8scluster.delete_cluster_id }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/get-response.json
+    command: epicctl api get -u "{{ k8scluster_uri }}" -n "OnPremSetup" -p {{ common.platform }} -o /tmp/get-response.json
     vars:
       getResp: "{{ (lookup('file', '/tmp/get-response.json') | from_json)['status'] }}"
     register : res
