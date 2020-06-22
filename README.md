@@ -57,7 +57,12 @@ Following playbooks are working:
         - import_playbook: playbooks/k8s-tenant.yml
 
 ### Troubleshooting
-        TODO
+
+If you are hitting this[1] k8s broken link issue, please run [2] before you start creatig  k8s cluster
+[1]https://github.com/kubernetes/kubernetes/issues/92242
+
+[2]ansible-playbook -i hosts playbooks/bug_fixes.yml
+
 ### Know issues
         TODO
 

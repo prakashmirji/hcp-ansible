@@ -1,0 +1,8 @@
+---
+  - hosts: k8sclusternodes
+    tasks:
+      - name: Set obsoletes to 0
+        lineinfile:
+          path: /etc/yum.conf
+          regexp: '^obsoletes=1'
+          line: obsoletes=0
