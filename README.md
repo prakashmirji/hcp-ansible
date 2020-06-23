@@ -24,11 +24,14 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
         TODO
 
 ### Pre-reqs
-        - Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
-        - 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES)
-        - epicctl tool
-        - jq tool
-        - HPE CP bundle ( tested with pulling it from s3 bucket)
+- Linux machine with ansible 2.9.x and python3.8.2 ( tested with these versions but might work with other versions too)
+- minimun 5 nodes with centos 7.6 or up or RHEL ( not tested on SLES) ( nodes can be VMs or baremetal, see product spec for sizing)
+- setup epicctl tool, 
+        - download it from https://my-epicctl.s3-us-west-2.amazonaws.com/epicctl
+        - chmod +x epicctl
+        - mv epicctl /usr/local/bin
+- download jq tool and ensure it is available in path
+- HPE CP bundle ( tested with pulling it from s3 bucket)
 
 ### How to setup your development env
         - TODO
