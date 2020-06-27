@@ -1,24 +1,22 @@
 ---
-# This bundle is used to locate the script location
 bundle_name: hpe-cp-rhel-release-5.1-1440
 
-# ssh credentials for the host_pools
-# It is assumed that all hosts have same root password
 credentials:
   ssh:
     username: root
-    password: password123
+    password: root
 
 common:
   platform: onprem
-  proxy_url: http://my-company.proxy.net:8080
+  #proxy_url: http://web-proxy.corp.hpecorp.net:8080   #uncomment if your env uses http proxy
+  #no_proxy: "localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16" #uncomment and update if needed
   name: OnPremSetup
 
 init:
   host_ip: 10.1.10.20 # controller node ip
 
 controller:
-  url_bin_path: https://s3bucket.bundle.bin # s3 bucket url where bundle is stored
+  url_bin_path: https://aws.s3.mybundle.bin #Add valid s3 URL
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
@@ -31,8 +29,13 @@ controller:
   int_gw_ip: 172.20.0.1
   int_nw_mask: 16
 
-# TODO
-# epic_hosts:
+# epic workers
+epicworkers:
+  host_pools:
+    - name: worker1
+      worker: 10.1.10.21
+  hdfs_disks: /dev/sdc
+  node_disks: /dev/sdb
 
 # for k8s cluster
 k8shosts:
