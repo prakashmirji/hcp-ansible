@@ -1,0 +1,14 @@
+---
+  - name: Set the epic worker ip variable
+    set_fact:
+      worker_ip: "{{ item.worker }}"
+  - name: Prepare yaml file for epicctl using template.
+    template:
+      src: workers.j2
+      dest: /tmp/create_epicworkers_tmp.yml
+      mode: 0640
+  
+  - name: Append the previous template content to a file
+    shell: cat /tmp/create_epicworkers_tmp.yml >> /tmp/create_epicworkers.yml
+    register: res
+    failed_when: res.rc != 0

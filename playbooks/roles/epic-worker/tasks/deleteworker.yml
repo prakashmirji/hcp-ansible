@@ -1,0 +1,99 @@
+---
+  - name: Get the host URI using the name/ip address.
+    command: epicctl api get -u /api/v1/workers -n {{ common.name }} -p {{ common.platform }} --jsonpath "._embedded.workers" -o /tmp/get-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - name: Check if response file exists.
+    stat:
+      path: /tmp/get-response.json
+    register: output
+
+  - name: Parse json to retrieve the tenant URI.
+    set_fact:
+      epic_workers: "{{ lookup('file', '/tmp/get-response.json') | from_json }}"
+    when: output.stat.exists == True
+  
+  - name: Set host name that needs to deleted
+    set_fact:
+      host_to_deleted: "{{ item.worker }}"
+  
+  - name: Set the epicworker_uri variable.
+    set_fact:
+      epicworker_uri: "{{ item._links.self.href }}"
+    with_items: "{{ epic_workers }}"
+    when: item.ip  == host_to_deleted
+
+  - debug:
+      msg: "{{ epicworker_uri }}"
+    failed_when: epicworker_uri is undefined
+  
+  # Before deleting host, ensure host is decommissioned
+  #- include_tasks: decommossion.yml
+  - name: Get the hdfs_commission_status status
+    command: epicctl api get -u "{{ epicworker_uri }}" -a -n {{ common.name }} -p {{ common.platform }} --jsonpath ".hdfs_commission_status" -o /tmp/get-response.json
+    register: result
+    failed_when: result.rc != 0
+  
+  - name: Set the decomminssion status to variable
+    set_fact:
+      decomm_status: "{{ result.stdout | from_json }}"
+  
+  - name: create decommission request
+    template:
+      src: worker_decomm.j2  # {"commission": false, "operation": "hdfs_commission", "id": "/api/v1/workers/6"}
+      dest: "/tmp/epicworker-decomm.json"
+      mode: 0644
+
+  - name: Make request to decommission a epic worker.
+    command: epicctl api put -u "{{ epicworker_uri }}" -f /tmp/epicworker-decomm.json -n "{{ common.name }}" -p {{ common.platform }} -o /tmp/epicworker-decomm-response.json
+    when: '"Decommissioned" != decomm_status'
+    register: res
+    failed_when: res.rc != 0
+
+  - pause:
+      seconds: 45
+  
+  - name: Poll the status of host decommission process by making get call to /api/v1/worker/workerr_id
+    command: epicctl api get -u "{{ epicworker_uri }}" -a -n {{ common.name }} -p {{ common.platform }} --jsonpath ".hdfs_commission_status" -o /tmp/get-response.json
+    register : res
+    vars:
+      getResp: "{{ res.stdout | from_json }}"
+    failed_when: res.rc != 0
+    changed_when: false
+    retries: 30
+    delay: 30
+    until:  '"Decommissioning" != getResp'
+
+  - debug:
+      msg: "{{ res.stdout }}"
+  - debug:
+      msg: "polling of host decommission task finished"
+
+  - name: Delete epic worker with epicctl and rest api.
+    command: epicctl api delete -u "{{ epicworker_uri }}" -a -n "{{ common.name }}" -p {{ common.platform }} -o /tmp/delete-response.json
+    register: res
+    failed_when: res.rc != 0
+
+  - debug:
+     msg: "{{ res.stdout }}"
+
+  - pause:
+      seconds: 45
+
+  - name: Poll the status of host delete process by making get call to /api/v1/workers/worker_id
+    command: epicctl api get -u "{{ epicworker_uri }}" -a -n {{ common.name }} -p {{ common.platform }} --jsonpath ".state" -o /tmp/get-response.json
+    register: res
+    vars:
+      getResp: "{{ res.stdout | from_json }}"
+    when: res.rc != 404
+    ignore_errors: yes # last call returns 403, above templating fails, so ignoring the error forcibly
+    failed_when: false
+    changed_when: false
+    retries: 20
+    delay: 30
+    until:  '"delete_in_progress" != getResp'
+
+  - debug:
+      msg: "polling of host delete task finished"
+  

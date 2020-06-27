@@ -1,0 +1,8 @@
+---
+  - name: Delete file if present
+    file:
+      state: absent
+      path: /tmp/create_epicworkers.yml
+
+  - include_tasks: prepare_addworkers.yml
+    with_items: "{{ epicworkers.host_pools }}"

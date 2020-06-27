@@ -1,0 +1,11 @@
+---
+  - name: Setingup and configuring epic workers.
+    command: epicctl op -f /tmp/create_epicworkers.yml -n "OnPremSetup"
+    register: res
+    # BUG: for some reason epicctl thinks that, there is an error
+    # but epicctl logs shows all success
+    #failed_when: false
+    failed_when: res.rc != 0
+
+  - debug:
+      msg: "{{ res.stdout }}"

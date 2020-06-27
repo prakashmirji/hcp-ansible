@@ -17,7 +17,12 @@ op: ControllerSetup
 platform: {{ common.platform }}
 parameters:
   config:
-    #proxy_url: {{ common.proxy_url }}
+    {% if common.proxy_url is defined %}
+    proxy_url: {{ common.proxy_url }}
+    {% endif % }
+    {% if common.no_proxy is defined %}
+    proxy_url: {{ common.no_proxy }}
+    {% endif % }
     url_bin_path: {{ controller.url_bin_path }}
   host:
     host_ip: {{ controller.host_ip }}

@@ -19,6 +19,7 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
           - add/remove hosts
   - I as a k8s admin wants to create and manage tenants
   - manage user roles
+  - I as a MLOps user wants to add and install worker nodes
   
 ### Use cases in mvp 2.0
         TODO
@@ -58,6 +59,7 @@ Following playbooks are working:
         - import_playbook: playbooks/k8s-hosts.yml
         - import_playbook: playbooks/k8s-cluster.yml
         - import_playbook: playbooks/k8s-tenant.yml
+        - import_playbook: playbooks/epic-worker.yml
 
 ### Troubleshooting
 
