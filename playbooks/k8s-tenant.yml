@@ -8,3 +8,4 @@
           createtenant: true
           updatetenant: false
           deletetenant: false
+          get_kubeconfig: true
