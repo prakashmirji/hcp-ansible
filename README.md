@@ -54,6 +54,7 @@ Following playbooks are working:
         - import_playbook: playbooks/pre-checks-hcp.yml
         - import_playbook: playbooks/prepare.yml
         - import_playbook: playbooks/uninstall-bds.yml
+        - import_playbool: playbooks/download-tools.yml
         - import_playbook: playbooks/controller.yml
         - import_playbook: playbooks/gateway.yml
         - import_playbook: playbooks/k8s-hosts.yml

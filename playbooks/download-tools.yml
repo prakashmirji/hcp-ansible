@@ -1,0 +1,5 @@
+---
+  - name: Download and copy tools
+    hosts: localhost
+    roles:
+      - role: tools

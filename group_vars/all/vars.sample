@@ -1,5 +1,7 @@
 ---
 bundle_name: hpe-cp-rhel-release-5.1-1440
+tools_dir: "{{ lookup('env','HOME') }}/tools"                                                  # place to store the kits like kubectl
+kubectl_cli_version: v1.17.5
 
 credentials:
   ssh:
@@ -8,15 +10,17 @@ credentials:
 
 common:
   platform: onprem
-  #proxy_url: http://web-proxy.corp.hpecorp.net:8080   #uncomment if your env uses http proxy
-  #no_proxy: "localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16" #uncomment and update if needed
+  #proxy:
+  #  http: {}
+  #  https: {}
+  #  no_proxy: {}                     #"localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16"
   name: OnPremSetup
 
 init:
   host_ip: 10.1.10.20 # controller node ip
 
 controller:
-  url_bin_path: https://aws.s3.mybundle.bin #Add valid s3 URL
+  url_bin_path: https://my.s3.repo/hpe-cp-rhel-release-5.1-1440.bin
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
