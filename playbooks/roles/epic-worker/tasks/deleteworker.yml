@@ -88,7 +88,7 @@
       getResp: "{{ res.stdout | from_json }}"
     when: res.rc != 404
     ignore_errors: yes # last call returns 403, above templating fails, so ignoring the error forcibly
-    failed_when: false
+    failed_when: false # TODO still fails at the last call. need to handle but passing this task
     changed_when: false
     retries: 20
     delay: 30

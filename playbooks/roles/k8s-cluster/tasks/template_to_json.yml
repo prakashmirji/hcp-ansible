@@ -1,4 +1,9 @@
 ---
+  - name: Delete file if present
+    file:
+      state: absent
+      path: /tmp/create_k8scluster.json
+
   - name: Prepare json file for epicctl using template.
     template:
       src: create_k8scluster.j2
