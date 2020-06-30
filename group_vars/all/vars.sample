@@ -1,6 +1,7 @@
 ---
 bundle_name: hpe-cp-rhel-release-5.1-1440
-tools_dir: "{{ lookup('env','HOME') }}/tools"                                                  # place to store the kits like kubectl
+tools_dir: "{{ lookup('env','HOME') }}/tools"                                               # place to store the kits like kubectl
+k8skubeconfig_dir: "{{ lookup('env','HOME') }}/k8skubeconfig"
 kubectl_cli_version: v1.17.5
 
 credentials:
@@ -20,7 +21,7 @@ init:
   host_ip: 10.1.10.20 # controller node ip
 
 controller:
-  url_bin_path: https://my.s3.repo/hpe-cp-rhel-release-5.1-1440.bin
+  url_bin_path: https://my.s3.amazonaws.com/hpe-cp-bundle.bin
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
