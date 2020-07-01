@@ -1,6 +1,6 @@
 ---
   - name: Setingup and configuring epic workers.
-    command: epicctl op -f /tmp/create_epicworkers.yml -n "OnPremSetup"
+    command: epicctl op -f /tmp/create_epicworkers.yml -n {{ common.name }}
     register: res
     # BUG: for some reason epicctl thinks that, there is an error
     # but epicctl logs shows all success

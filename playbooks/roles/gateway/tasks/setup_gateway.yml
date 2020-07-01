@@ -6,7 +6,7 @@
       mode: 0640
 
   - name: Run epicctl command to setup and configure gateway node
-    command: epicctl op -f /tmp/gateway.yml -n "OnPremSetup"
+    command: epicctl op -f /tmp/gateway.yml -n {{ common.name }}
     register: res
     failed_when: res.rc != 0
 

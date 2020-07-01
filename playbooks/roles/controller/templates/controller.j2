@@ -21,6 +21,10 @@ parameters:
     proxy_url: {{ common.proxy.http }}
     {% endif % }
     url_bin_path: {{ controller.url_bin_path }}
+    {% if common.certs is defined %}
+    ssl_cert_file: {{ common.certs.ssl_cert_file }}
+    ssl_cert_key_file: {{ common.certs.ssl_cert_key_file }}
+    {% endif %}
   host:
     host_ip: {{ controller.host_ip }}
   ssh:

@@ -16,6 +16,9 @@ common:
   #  https: {}
   #  no_proxy: {}                     #"localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16"
   name: OnPremSetup
+  #certs:
+  #  ssl_cert_file: /tmp/server.crt
+  #  ssl_cert_key_file: /tmp/server.key
 
 init:
   host_ip: 10.1.10.20 # controller node ip

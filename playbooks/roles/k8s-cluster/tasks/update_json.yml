@@ -1,6 +1,6 @@
 ---
   - name: Get call to /api/v2/worker/k8shost to get k8shosts json response
-    command: epicctl api get -u /api/v2/worker/k8shost -n "OnPremSetup" -p "onprem" --jsonpath "._embedded.k8shosts" -o /tmp/get-response.json
+    command: epicctl api get -u /api/v2/worker/k8shost -n {{ common.name }} -p "onprem" --jsonpath "._embedded.k8shosts" -o /tmp/get-response.json
     register: res
     failed_when: res.rc != 0
   
