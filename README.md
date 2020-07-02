@@ -51,7 +51,6 @@ This repo hosts the ansible playbooks to deploy and configure HPE Container Plat
 
 Following playbooks are working:
 
-        - import_playbook: playbooks/pre-checks-hcp.yml
         - import_playbook: playbooks/prepare.yml
         - import_playbook: playbooks/uninstall-bds.yml
         - import_playbool: playbooks/download-tools.yml

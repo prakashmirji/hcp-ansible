@@ -16,20 +16,21 @@ parameters:
 op: ControllerSetup
 platform: {{ common.platform }}
 parameters:
-  config:
-    {% if common.proxy is defined %}
-    proxy_url: {{ common.proxy.http }}
-    {% endif % }
-    url_bin_path: {{ controller.url_bin_path }}
-    {% if common.certs is defined %}
-    ssl_cert_file: {{ common.certs.ssl_cert_file }}
-    ssl_cert_key_file: {{ common.certs.ssl_cert_key_file }}
-    {% endif %}
   host:
     host_ip: {{ controller.host_ip }}
   ssh:
     password: {{ credentials.ssh.password }}
     username: {{ credentials.ssh.username }}
+  config:
+    url_bin_path: {{ controller.url_bin_path }}
+    {% if common.proxy is defined  -%}
+    proxy_url: {{ common.proxy.http }}
+    {% endif -%}
+    {% if common.certs is defined -%}
+    ssl_cert_file: {{ common.certs.ssl_cert_file }}
+    ssl_cert_key_file: {{ common.certs.ssl_cert_key_file }}
+    {% endif %}
+
 ---
 op: ControllerConfig
 platform: {{ common.platform }}

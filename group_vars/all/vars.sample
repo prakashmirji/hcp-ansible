@@ -12,9 +12,9 @@ credentials:
 common:
   platform: onprem
   #proxy:
-  #  http: {}
-  #  https: {}
-  #  no_proxy: {}                     #"localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16"
+  #  http: http://myproxy.com:8080
+  #  https: http://myproxy.com:8080
+  #  no_proxy: "localhost, 127.0.0.1, 10.1.10.0/24,172.20.0.0/16,10.244.0.0/16,10.96.0.0/16"
   name: OnPremSetup
   #certs:
   #  ssl_cert_file: /tmp/server.crt
