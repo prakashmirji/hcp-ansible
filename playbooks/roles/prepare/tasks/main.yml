@@ -1,3 +1,5 @@
 ---
+  - include_tasks: ntp_config.yml
+    when: ntp_config is defined
   - include_tasks: prepare.yml
     when: prepare is defined

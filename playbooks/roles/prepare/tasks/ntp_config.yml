@@ -1,0 +1,21 @@
+---
+  - name: Make sure ntpdate command is installed.
+    become: true
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - "ntpdate"
+  
+  - name: "Ensure NTP server(s) configured: {{ ntp_servers | join (', ') }}"
+    shell: ntpdate -q "{{ item }}"
+    with_items: "{{ ntp_servers }}"
+    changed_when: false
+    register: result
+    failed-when: result.rc != 0
+  
+  - name: Ensure ntpd service is restarted
+    service:
+      state: restarted
+      daemon_reload: yes
+      name: ntp

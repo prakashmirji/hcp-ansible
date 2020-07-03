@@ -6,3 +6,4 @@
       - role: prepare
         vars:
            prepare: yes
+           ntp_config: yes

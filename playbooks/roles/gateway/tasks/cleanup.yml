@@ -9,6 +9,7 @@
     register: res
     failed_when: false
     with_items:
+    - "pkill -9 epmd"
     - "pkill -9 httpd"
     - "pkill -9 haproxy"
     - "pkill -9 beam.smp"
