@@ -5,7 +5,7 @@
     roles:
       - role: k8s-tenants
         vars:
-          createtenant: true
+          createtenant: false
           updatetenant: false
-          deletetenant: false
-          get_kubeconfig: true
+          deletetenant: true
+          get_kubeconfig: false

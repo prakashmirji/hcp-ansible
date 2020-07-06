@@ -3,7 +3,7 @@
   - include_tasks: create_tenant.yml
     when: createtenant is true
   - include_tasks: get_kubeconfig.yml
-    when: get_kubeconfig is defined
+    when: get_kubeconfig is true
   - include_tasks: delete_tenant.yml
     when: deletetenant is true
   - include_tasks: update_tenant.yml
