@@ -1,10 +1,10 @@
 ---
 # tasks file for k8s-tenants
   - include_tasks: create_tenant.yml
-    when: createtenant is true
+    when: createtenant is defined
   - include_tasks: get_kubeconfig.yml
-    when: get_kubeconfig is true
+    when: get_kubeconfig is defined
   - include_tasks: delete_tenant.yml
-    when: deletetenant is true
+    when: deletetenant is defined
   - include_tasks: update_tenant.yml
-    when: updatetenant is true
+    when: updatetenant is defined

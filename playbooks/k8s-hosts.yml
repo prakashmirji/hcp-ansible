@@ -5,14 +5,14 @@
     roles:
       - role: k8s-hosts
         vars:
-          cleanup: true
+          cleanup: yes
   - name: Add k8s-hosts into cluster and install bundle.
     hosts: localhost
     gather_facts: false
     roles:
       - role: k8s-hosts
         vars:
-          addhosts: true
+          addhosts: yes
 
   - name: Delete k8s-hosts from cluster.
     hosts: localhost
@@ -20,6 +20,6 @@
     roles:
       - role: k8s-hosts
         vars:
-          deletehosts: false
+          #deletehosts: yes
           delete_pools:
             - host: 10.1.10.22

@@ -1,10 +1,10 @@
 ---
   - include_tasks: add_pool.yml
-    when: addworkers is true
+    when: addworkers is defined
 
   - include_tasks: addworkers.yml
-    when: addworkers is true
+    when: addworkers is defined
 
   - include_tasks: delete_pool.yml
-    when: deleteworkers is true
+    when: deleteworkers is defined
 

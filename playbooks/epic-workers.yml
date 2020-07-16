@@ -5,7 +5,7 @@
     roles:
       - role: epic-worker
         vars:
-          addworkers: true
+          addworkers: yes
 
   - name: Delete epic workers from cluster.
     hosts: localhost
@@ -13,6 +13,6 @@
     roles:
       - role: epic-worker
         vars:
-          deleteworkers: false
+          deleteworkers: yes
           delete_pools:
             - worker: 10.1.10.21

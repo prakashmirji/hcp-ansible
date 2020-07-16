@@ -1,13 +1,13 @@
 ---
   - include_tasks: cleanup.yml
-    when: cleanup is true
+    when: cleanup is defined
 
   - include_tasks: add_pool.yml
-    when: addhosts is true
+    when: addhosts is defined
 
   - include_tasks: addhosts.yml
-    when: addhosts is true
+    when: addhosts is defined
 
   - include_tasks: delete_pool.yml
-    when: deletehosts is true
+    when: deletehosts is defined
 

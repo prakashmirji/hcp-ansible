@@ -1,17 +1,17 @@
 ---
   - include_tasks: template_to_json.yml
-    when: decommission is false
+    when: decommission is defined
   - include_tasks: pool.yml
-    when: decommission is false
+    when: decommission is defined
   - include_tasks: create_cluster.yml
-    when: provision is true
+    when: provision is defined
 
   # - include_tasks: add-node.yml
-  #   when: addnode is true
+  #   when: addnode is defined
 
   # - include_tasks: delete-node.yml
-  #   when: deletenode is true
+  #   when: deletenode is defined
   
   - include_tasks: delete_cluster.yml
-    when: decommission is true
+    when: decommission is defined
 
