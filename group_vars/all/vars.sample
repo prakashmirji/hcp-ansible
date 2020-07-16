@@ -24,7 +24,7 @@ init:
   host_ip: 10.1.10.20 # controller node ip
 
 controller:
-  url_bin_path: https://my.s3.amazonaws.com/hpe-cp-bundle.bin
+  url_bin_path: https://my.s3.amazonaws.com/hpe-cp-bundle.bin # make sure to change this url to correct bundle file
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
@@ -36,6 +36,7 @@ controller:
   int_end_ip: 172.20.255.254
   int_gw_ip: 172.20.0.1
   int_nw_mask: 16
+  #controller_public_if: ens192 # Multiple interfaces with IP address assignments found. Use --controller-public-if to specify a public interface.
 
 # epic workers
 epicworkers:

@@ -30,6 +30,8 @@
   
   # Before deleting host, ensure host is decommissioned
   #- include_tasks: decommossion.yml
+  # TODO: if servers are added in the error state,
+  # get response doesn't have commission state, need to handle this
   - name: Get the storage_commission_status status
     command: epicctl api get -u "{{ k8shost_uri }}" -a -n {{ common.name }} -p {{ common.platform }} --jsonpath ".storage_commission_status" -o /tmp/get-response.json
     register: result

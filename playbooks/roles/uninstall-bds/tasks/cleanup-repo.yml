@@ -1,0 +1,5 @@
+---
+  - name: Enure existing bluedata yum repo's are cleaned
+    command: rm -rf /etc/yum.repos.d/bluedata.repo; rm -rf /var/cache/yum/*
+    register: res
+    failed_when: res.rc != 0

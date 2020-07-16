@@ -1,4 +1,7 @@
 ---
+  - include_tasks: cleanup.yml
+    when: cleanup is true
+
   - include_tasks: add_pool.yml
     when: addhosts is true
 

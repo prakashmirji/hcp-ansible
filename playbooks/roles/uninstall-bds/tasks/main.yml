@@ -1,4 +1,7 @@
 ---
 # tasks file for uninstall-bds
   - include_tasks: uninstall-bds.yml
-    when: uninstall is true
+    when: uninstall is defined
+
+  - include_tasks: cleanup-repo.yml
+    when: cleanup_repo is defined

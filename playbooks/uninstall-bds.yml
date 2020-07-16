@@ -8,4 +8,13 @@
     roles:
       - role: uninstall-bds
         vars:
-          uninstall: true
+          uninstall: yes
+
+  - name: Prepare nodes before installing software.
+    # --erase option. is not delete old yum repo's
+    hosts: allnodes:!controller
+    gather_facts: false
+    roles:
+      - role: uninstall-bds
+        vars:
+          cleanup_repo: yes

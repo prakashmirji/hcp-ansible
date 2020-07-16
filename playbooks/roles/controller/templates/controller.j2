@@ -30,6 +30,9 @@ parameters:
     ssl_cert_file: {{ common.certs.ssl_cert_file }}
     ssl_cert_key_file: {{ common.certs.ssl_cert_key_file }}
     {% endif %}
+    {% if common.controller_public_if is defined -%}
+    controller_public_if: {{ common.controller_public_if }}
+    {% endif %}
 
 ---
 op: ControllerConfig

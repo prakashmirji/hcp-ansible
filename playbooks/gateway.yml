@@ -3,7 +3,7 @@
     hosts: gateway
     gather_facts: false
     roles:
-      - role: controller
+      - role: gateway
         vars:
           cleanup: yes
 
