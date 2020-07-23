@@ -61,7 +61,12 @@ Following playbooks are working:
         - import_playbook: playbooks/k8s-tenant.yml
         - import_playbook: playbooks/epic-worker.yml
 
+If you starting first time, you can start from download-tools.yml
+
 ### Troubleshooting
+Following places can be looked at for the errors
+[1] Too look for logs of epicctl : ~/.epicctl{{name}}
+[2] Too look for platform logs /var/log/bluedata
 
 If you are hitting this[1] k8s broken link issue, please run [2] before you start creatig  k8s cluster
 [1]https://github.com/kubernetes/kubernetes/issues/92242

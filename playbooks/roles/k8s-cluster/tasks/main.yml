@@ -1,8 +1,8 @@
 ---
   - include_tasks: template_to_json.yml
-    when: decommission is defined
+    when: provision is defined
   - include_tasks: pool.yml
-    when: decommission is defined
+    when: provision is defined
   - include_tasks: create_cluster.yml
     when: provision is defined
 

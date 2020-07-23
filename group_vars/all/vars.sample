@@ -37,6 +37,7 @@ controller:
   int_gw_ip: 172.20.0.1
   int_nw_mask: 16
   #controller_public_if: ens192 # Multiple interfaces with IP address assignments found. Use --controller-public-if to specify a public interface.
+  yum_update: true # until epicctl is fully supported on sles, you can set this to false to try on sles
 
 # epic workers
 epicworkers:
