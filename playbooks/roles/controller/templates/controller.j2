@@ -23,6 +23,9 @@ parameters:
     username: {{ credentials.ssh.username }}
   config:
     yum_update: {{ controller.yum_update }}
+    {% if controller.controller_public_if is defined -%}
+    controller_public_if: {{ controller.controller_public_if }}
+    {% endif %}
     url_bin_path: {{ controller.url_bin_path }}
     {% if common.proxy is defined  -%}
     proxy_url: {{ common.proxy.http }}
@@ -30,9 +33,6 @@ parameters:
     {% if common.certs is defined -%}
     ssl_cert_file: {{ common.certs.ssl_cert_file }}
     ssl_cert_key_file: {{ common.certs.ssl_cert_key_file }}
-    {% endif %}
-    {% if common.controller_public_if is defined -%}
-    controller_public_if: {{ common.controller_public_if }}
     {% endif %}
 
 ---

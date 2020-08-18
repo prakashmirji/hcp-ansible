@@ -28,9 +28,9 @@ controller:
   host_ip: 10.1.10.20
   bd_domain: bddomain
   bd_prefix: bluedata
-  hdfs_disks: /dev/sdc
-  no_tenant_isolation: false
-  no_tenant_storage: false
+  hdfs_disks: /dev/sdc         # set to empty if you are using isolated tenant storage or using picasso
+  no_tenant_isolation: false   # set to true if you are using isolated tenant storage or using picasso
+  no_tenant_storage: false     # set to true if you are using isolated tenant storage or using picasso
   node_disks: /dev/sdb
   int_start_ip: 172.20.0.2
   int_end_ip: 172.20.255.254
@@ -56,7 +56,7 @@ k8shosts:
       host: 10.1.10.22
     - name: worker3
       host: 10.1.10.23
-  ephemeral_disks: /dev/sdc
+  ephemeral_disks: /dev/sdc                # if you have more disks, you can pass with comma (,) separated
   persistent_disks: /dev/sdb
 
 gateway:
