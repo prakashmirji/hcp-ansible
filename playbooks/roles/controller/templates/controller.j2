@@ -25,7 +25,7 @@ parameters:
     yum_update: {{ controller.yum_update }}
     {% if controller.controller_public_if is defined -%}
     controller_public_if: {{ controller.controller_public_if }}
-    {% endif %}
+    {% endif -%}
     url_bin_path: {{ controller.url_bin_path }}
     {% if common.proxy is defined  -%}
     proxy_url: {{ common.proxy.http }}
